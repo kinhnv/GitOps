@@ -1,0 +1,125 @@
+{{ range .Values.servers }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .name }}
+spec:
+  revisionHistoryLimit: {{ .revisionHistoryLimit }}
+  selector:
+    matchLabels:
+      app: {{ .name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .name }}
+    spec:
+      containers:
+      {{- range $containerIndex, $containerValue := .containers }}
+      - name: {{ $containerValue.name }}
+        image: "{{ $containerValue.image }}:{{ $containerValue.tag }}"{{ "" -}}
+        {{/*
+        set env
+        */}}
+        {{- if $containerValue.env }}
+        env:
+        {{- range $containerValue.env }}
+        - name: {{ .name }}
+          {{- if .value }}
+          value: "{{ .value }}"{{ "" -}}
+          {{ end -}}
+          {{- if .secret }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ .secret }}
+              key: {{ .key }}
+              optional: {{ .optional }}{{ "" -}}
+          {{ end -}}
+        {{ end -}}
+        {{ end -}}
+        {{/*
+        set env
+        */}}
+        {{- if $containerValue.envFrom }}
+        envFrom:
+        {{- range $containerValue.envFrom }}
+        {{- if .secretRef }}
+        - secretRef:
+            name: {{ .secretRef.name }}{{ "" -}}
+        {{ end -}}
+        {{ end -}}
+        {{ end -}}
+        {{/*
+        set ports
+        */}}
+        {{- if $containerValue.ports }}
+        ports:
+        {{- range $containerValue.ports }}
+        - containerPort: {{ .port -}}
+        {{ end -}}
+        {{ end -}}
+        {{/*
+        set args
+        */}}
+        {{- if $containerValue.args }}
+        args:
+        {{- range .args }}
+        - "{{ . }}"{{ "" -}}
+        {{ end -}}
+        {{ end -}}
+        {{/*
+        set securityContext
+        */}}
+        {{- if $containerValue.securityContext }}
+        securityContext:
+          {{- if $containerValue.securityContext.capabilities }}
+          capabilities:
+            {{- if $containerValue.securityContext.capabilities.add }}
+            add:
+            {{- range $containerValue.securityContext.capabilities.add }}
+            - {{ . }}{{ "" -}}
+            {{ end -}}
+            {{ end -}}
+          {{ end -}}
+          {{- if $containerValue.securityContext.runAsRoot }}
+          runAsUser: 0{{ "" -}}
+          {{ end -}}
+        {{ end -}}
+        {{/*
+        set volumeMounts
+        */}}
+        {{- if $containerValue.volumes }}
+        volumeMounts:
+        {{- range $volumeIndex, $volumeValue := $containerValue.volumes }}
+        - name: "{{ $containerValue.name }}-{{ $volumeIndex }}"
+          mountPath: {{ $volumeValue.path }}
+          {{- if $volumeValue.subPath }}
+          subPath: "{{ $volumeValue.subPath }}"{{ "" -}}
+          {{ end -}}
+        {{ end -}}
+        {{ end -}}
+        {{/*
+        end set volumes
+        */}}
+      {{ end -}}
+      {{ $volumesLength := include "server.getVolumes" .containers }}
+      {{- if gt (len $volumesLength) 0 -}}
+      volumes:
+      {{- range $containerIndex, $containerValue := .containers }}
+      {{- range $volumeIndex, $volumeValue := $containerValue.volumes }}
+      - name: "{{ $containerValue.name }}-{{ $volumeIndex }}"
+      {{- if $volumeValue.configMap }}
+        configMap:
+          name: "{{ $volumeValue.configMap }}"{{ "" -}}
+      {{ end -}}
+      {{- if $volumeValue.nfs }}
+        persistentVolumeClaim:
+          claimName: "{{ $containerValue.name }}-{{ $volumeIndex }}-volume-claim"{{ "" -}}
+      {{ end -}}
+      {{ end -}}
+      {{ end -}}
+      {{- if .runInMaster }}
+      {{- include "server.runInMaster" . | nindent 6 -}}
+      {{ end -}}
+      {{ end -}}
+{{ end }}

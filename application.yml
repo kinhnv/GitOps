@@ -1,0 +1,146 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: server
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@gitlab.com:i3rothers/gitops.git
+    targetRevision: main
+    path: server
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: server
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@gitlab.com:i3rothers/gitops.git
+    targetRevision: main
+    path: kafka
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kafka
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka-connect
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@gitlab.com:i3rothers/gitops.git
+    targetRevision: main
+    path: kafka-connect
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kafka
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@gitlab.com:i3rothers/gitops.git
+    targetRevision: main
+    path: vault
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-maker
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@gitlab.com:i3rothers/gitops.git
+    targetRevision: main
+    path: test-maker
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test-maker
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ngrok
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@gitlab.com:i3rothers/gitops.git
+    targetRevision: main
+    path: ngrok
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ngrok
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@gitlab.com:i3rothers/gitops.git
+    targetRevision: main
+    path: grafana
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: grafana
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true

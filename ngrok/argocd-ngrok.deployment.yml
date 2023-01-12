@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-ngrok
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: argocd-ngrok
+  template:
+    metadata:
+      labels:
+        app: argocd-ngrok
+    spec:
+      containers:
+      - name: argocd-ngrok
+        image: ngrok/ngrok:alpine
+        env:
+          - name: HOST
+            value: "argocd-server.argocd.svc.cluster.local"
+          - name: PORT
+            value: "443"
+          - name: NGROK_AUTHTOKEN
+            value: "28vLa0hWj5Sh5z7Bv62qW9BHjT9_2NPFbCjujxATpVqpUkKqA"
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command: ["/bin/sh"]
+        args: ["-c", "ngrok http $HOST:$PORT --log=stdout"]

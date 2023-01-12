@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch-ngrok
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: elasticsearch-ngrok
+  template:
+    metadata:
+      labels:
+        app: elasticsearch-ngrok
+    spec:
+      containers:
+      - name: elasticsearch-ngrok
+        image: ngrok/ngrok:alpine
+        env:
+          - name: HOST
+            value: "elasticsearch.server.svc.cluster.local"
+          - name: PORT
+            value: "9200"
+          - name: NGROK_AUTHTOKEN
+            value: "2BYMZB12Gz6IVzJdBBMeKORDcZA_2ec2UNWQMbNZiRm28dQjt"
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command: ["/bin/sh"]
+        args: ["-c", "ngrok http $HOST:$PORT --log=stdout"]

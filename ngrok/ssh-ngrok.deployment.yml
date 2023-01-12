@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssh-ngrok
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: ssh-ngrok
+  template:
+    metadata:
+      labels:
+        app: ssh-ngrok
+    spec:
+      containers:
+      - name: ssh-ngrok
+        image: ngrok/ngrok:alpine
+        env:
+          - name: HOST
+            value: "ssh.server.svc.cluster.local"
+          - name: PORT
+            value: "22"
+          - name: NGROK_AUTHTOKEN
+            value: "2A3pYfjcQx1yxnlQnizDnJoTUkl_9SUasrzPwwG59YKyUF1D"
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command: ["/bin/sh"]
+        args: ["-c", "ngrok tcp $HOST:$PORT --log=stdout"]
