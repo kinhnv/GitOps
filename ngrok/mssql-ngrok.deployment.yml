@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssql-ngrok
+spec:
+  selector:
+    matchLabels:
+      app: mssql-ngrok
+  template:
+    metadata:
+      labels:
+        app: mssql-ngrok
+    spec:
+      containers:
+      - name: mssql-ngrok
+        image: ngrok/ngrok:alpine
+        env:
+          - name: HOST
+            value: "mssql.server.svc.cluster.local"
+          - name: PORT
+            value: "1433"
+          - name: NGROK_AUTHTOKEN
+            value: "29kkeywjkqeYDLdjmBxMq4hyREu_6qB3yXNEqAuBy9iwXaugL"
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command: ["/bin/sh"]
+        args: ["-c", "ngrok tcp $HOST:$PORT --log=stdout"]

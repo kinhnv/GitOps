@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault-ngrok
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: vault-ngrok
+  template:
+    metadata:
+      labels:
+        app: vault-ngrok
+    spec:
+      containers:
+      - name: vault-ngrok
+        image: ngrok/ngrok:alpine
+        env:
+          - name: HOST
+            value: "vault.server.svc.cluster.local"
+          - name: PORT
+            value: "8200"
+          - name: NGROK_AUTHTOKEN
+            value: "2Bn8Z3MzNBcGCbgJB6lU7qpWh5a_3eH4EeiM2iiVNNajKUaHW"
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command: ["/bin/sh"]
+        args: ["-c", "ngrok http $HOST:$PORT --log=stdout"]

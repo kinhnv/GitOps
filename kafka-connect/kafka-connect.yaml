@@ -1,0 +1,30 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnect
+metadata:
+  name: kafka-connect-cluster
+  annotations:
+    strimzi.io/use-connector-resources: "true"
+spec:
+  replicas: 1
+  bootstrapServers: cp-kafka:9092
+  config:
+    group.id: kafka-connect-cluster
+    offset.storage.topic: kafka-connect-cluster-offsets
+    config.storage.topic: kafka-connect-cluster-configs
+    status.storage.topic: kafka-connect-cluster-status
+    key.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    key.converter.schemas.enable: true
+    value.converter.schemas.enable: true
+    config.storage.replication.factor: 1
+    offset.storage.replication.factor: 1
+    status.storage.replication.factor: 1
+  build:
+    output:
+      type: docker
+      image: registry.server.svc.cluster.local:30000/kafka-connect:latest
+    plugins: 
+      - name: debezium-connector-sqlserver
+        artifacts:
+          - type: zip
+            url: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/debezium/debezium-connector-sqlserver/versions/1.9.7/debezium-debezium-connector-sqlserver-1.9.7.zip

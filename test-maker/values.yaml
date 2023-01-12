@@ -1,0 +1,20 @@
+registry: 192.168.1.7:30000
+project:
+  label: test-maker
+services:
+  testService:
+    label: test-service
+    tag: "682750433"
+  eventService:
+    label: event-service
+    tag: "693311700"
+  userService:
+    label: user-service
+    tag: "674667117"
+servers:
+  identityServer:
+    label: identity-server
+    tag: "674667117"
+  apiGateway:
+    label: api-gateway
+    tag: "677857003"

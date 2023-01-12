@@ -1,0 +1,29 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "api-gateway-ngrok"
+spec:
+  selector:
+    matchLabels:
+      app: "api-gateway-ngrok"
+  template:
+    metadata:
+      labels:
+        app: "api-gateway-ngrok"
+    spec:
+      containers:
+      - name: "api-gateway-ngrok"
+        image: ngrok/ngrok:alpine
+        env:
+          - name: HOST
+            value: "api-gateway.test-maker.svc.cluster.local"
+          - name: PORT
+            value: "80"
+          - name: NGROK_AUTHTOKEN
+            value: "2AcXLYoUwj7zsEhnAsB859vDL3W_5XUvNgYTuCRCdQm5gaWNC"
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command: ["/bin/sh"]
+        args: ["-c", "ngrok http $HOST:$PORT --log=stdout"]
