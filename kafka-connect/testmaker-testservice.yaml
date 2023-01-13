@@ -8,11 +8,12 @@ spec:
   class: io.debezium.connector.sqlserver.SqlServerConnector
   tasksMax: 1
   config:
-    database.server.name : "mssql"
-    database.hostname : "mssql.server.svc.cluster.local"
-    database.port : "1433"
-    database.user : "sa"
-    database.password : "VanKinh1996"
-    database.dbname : "TestMaker.TestService"
-    database.history.kafka.bootstrap.servers : "cp-kafka:9092"
+    database.server.name: "mssql"
+    database.hostname: "mssql.server.svc.cluster.local"
+    database.port: "1433"
+    database.user: "sa"
+    database.password: "VanKinh1996"
+    database.dbname: "TestMaker.TestService"
+    table.include.list": "dbo.UserQuestions"
+    database.history.kafka.bootstrap.servers: "cp-kafka:9092"
     database.history.kafka.topic: "schema-changes.testmaker-testservice"
