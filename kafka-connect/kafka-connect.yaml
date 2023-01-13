@@ -12,7 +12,6 @@ spec:
     offset.storage.topic: kafka-connect-cluster-offsets
     config.storage.topic: kafka-connect-cluster-configs
     status.storage.topic: kafka-connect-cluster-status
-    cleanup.policy: delete
     key.converter: org.apache.kafka.connect.json.JsonConverter
     value.converter: org.apache.kafka.connect.json.JsonConverter
     key.converter.schemas.enable: true
