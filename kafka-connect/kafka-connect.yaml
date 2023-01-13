@@ -12,6 +12,7 @@ spec:
     offset.storage.topic: kafka-connect-cluster-offsets
     config.storage.topic: kafka-connect-cluster-configs
     status.storage.topic: kafka-connect-cluster-status
+    cleanup.policy: delete
     key.converter: org.apache.kafka.connect.json.JsonConverter
     value.converter: org.apache.kafka.connect.json.JsonConverter
     key.converter.schemas.enable: true
@@ -23,8 +24,8 @@ spec:
     output:
       type: docker
       image: registry.server.svc.cluster.local:30000/kafka-connect:latest
-    plugins: 
-      - name: debezium-connector-sqlserver
-        artifacts:
-          - type: zip
-            url: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/debezium/debezium-connector-sqlserver/versions/1.9.7/debezium-debezium-connector-sqlserver-1.9.7.zip
+    plugins:
+    - name: debezium-connector-sqlserver
+      artifacts:
+      - type: zip
+        url: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/debezium/debezium-connector-sqlserver/versions/1.9.7/debezium-debezium-connector-sqlserver-1.9.7.zip
