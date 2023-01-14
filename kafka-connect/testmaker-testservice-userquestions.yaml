@@ -1,0 +1,24 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: testmaker-testservice-userquestions-connector
+  labels:
+    strimzi.io/cluster: kafka-connect-cluster
+spec:
+  class: io.confluent.connect.http.HttpSinkConnector
+  tasksMax: 1
+  config:
+    topics: mssql.dbo.UserQuestions
+    http.api.url: http://data-transfer.server.svc.cluster.local/api/UserQuestions?userId=${key.UserId}&questionId=${key.QuestionId}
+    request.method: POST
+    request.body.format: json
+    batch.max.size: 1,
+    batch.json.as.array: false,
+    headers: Content-Type:application/json
+    confluent.topic.bootstrap.servers: cp-kafka:9092
+    confluent.topic.replication.factor: 1
+    reporter.bootstrap.servers: cp-kafka:9092
+    reporter.result.topic.name: success-responses
+    reporter.result.topic.replication.factor: 1
+    reporter.error.topic.name: error-responses
+    reporter.error.topic.replication.factor: 1
