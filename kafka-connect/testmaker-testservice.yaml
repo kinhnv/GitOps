@@ -17,3 +17,4 @@ spec:
     table.include.list: "dbo.UserQuestions"
     database.history.kafka.bootstrap.servers: "cp-kafka:9092"
     database.history.kafka.topic: "schema-changes.testmaker-testservice"
+
