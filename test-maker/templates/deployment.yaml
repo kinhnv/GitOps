@@ -117,3 +117,23 @@ spec:
         image: "{{ .Values.registry }}/test-maker.{{ .Values.servers.apiGateway.label }}:{{ .Values.servers.apiGateway.tag }}"
         ports:
         - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.clients.dataTransfer.label }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Values.clients.dataTransfer.label }}"
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.clients.dataTransfer.label }}"
+    spec:
+      containers:
+      - name: "{{ .Values.clients.dataTransfer.label }}"
+        image: "{{ .Values.registry }}/test-maker.{{ .Values.clients.dataTransfer.label }}:{{ .Values.clients.dataTransfer.tag }}"
+        ports:
+        - containerPort: 80
