@@ -18,3 +18,7 @@ servers:
   apiGateway:
     label: api-gateway
     tag: "677857003"
+clients:
+  dataTransfer:
+    label: data-transfer
+    tag: "674667117"
