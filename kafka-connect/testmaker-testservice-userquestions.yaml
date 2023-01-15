@@ -9,7 +9,7 @@ spec:
   tasksMax: 1
   config:
     topics: "mssql.dbo.UserQuestions"
-    http.api.url: "http://data-transfer.test-maker.svc.cluster.local/api/UserQuestions?userId=${UserId}&questionId=${QuestionId}"
+    http.api.url: "http://data-transfer.test-maker.svc.cluster.local/api/UserQuestions?userId=${Key.UserId}&questionId=${Key.QuestionId}"
     request.method: "POST"
     request.body.format: "json"
     batch.max.size: "1"
@@ -22,4 +22,7 @@ spec:
     reporter.result.topic.replication.factor: "1"
     reporter.error.topic.name: "error-responses"
     reporter.error.topic.replication.factor: "1"
+    transforms: "Flatten"
+    transforms.Flatten.type: "org.apache.kafka.connect.transforms.Flatten$Key"
+    transforms.Flatten.delimiter: "."
 
