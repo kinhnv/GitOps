@@ -52,61 +52,61 @@ servers:
     - port: 8080
       interalPort: 30001
       exteralPort: 30001
-# - name: cp-schema-registry
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: cp-schema-registry
-#     image: confluentinc/cp-schema-registry
-#     tag: "6.1.9"
-#     env:
-#     - name: SCHEMA_REGISTRY_HOST_NAME
-#       value: "schema-registry"
-#     - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
-#       value: "cp-kafka:9092"
-#     ports:
-#     - port: 8081
-# - name: cp-kafka-connect
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: cp-kafka-connect
-#     image: confluentinc/cp-kafka-connect
-#     tag: "6.1.9"
-#     env:
-#     - name: CONNECT_BOOTSTRAP_SERVERS
-#       value: "cp-kafka:9092"
-#     - name: CONNECT_REST_PORT
-#       value: "8083"
-#     - name: CONNECT_GROUP_ID
-#       value: "cp-kafka-connect"
-#     - name: CONNECT_CONFIG_STORAGE_TOPIC
-#       value: _connect-configs
-#     - name: CONNECT_OFFSET_STORAGE_TOPIC
-#       value: _connect-offsets
-#     - name: CONNECT_STATUS_STORAGE_TOPIC
-#       value: _connect-status
-#     - name: CONNECT_KEY_CONVERTER
-#       value: org.apache.kafka.connect.storage.StringConverter
-#     - name: CONNECT_VALUE_CONVERTER
-#       value: io.confluent.connect.avro.AvroConverter
-#     - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
-#       value: "http://cp-schema-registry:8081"
-#     - name: CONNECT_REST_ADVERTISED_HOST_NAME
-#       value: "cp-kafka-connect"
-#     - name: CONNECT_LOG4J_APPENDER_STDOUT_LAYOUT_CONVERSIONPATTERN
-#       value: "[%d] %p %X{connector.context}%m (%c:%L)%n"
-#     - name: CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR
-#       value: "1"
-#     - name: CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR
-#       value: "1"
-#     - name: CONNECT_STATUS_STORAGE_REPLICATION_FACTOR
-#       value: "1"
-#     ports:
-#     - port: 8083
-#       interalPort: 30002
-#       exteralPort: 30002
-#     volumes:
-#     - path: /usr/share/confluent-hub-components
-#       nfs:
-#         path: "/data/cp-kafka-connect/confluent-hub-components"
-#         server: "192.168.1.7"
-#         storage: 10Gi
+- name: cp-schema-registry
+  revisionHistoryLimit: 0
+  containers:
+  - name: cp-schema-registry
+    image: confluentinc/cp-schema-registry
+    tag: "6.1.9"
+    env:
+    - name: SCHEMA_REGISTRY_HOST_NAME
+      value: "schema-registry"
+    - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
+      value: "cp-kafka:9092"
+    ports:
+    - port: 8081
+- name: cp-kafka-connect
+  revisionHistoryLimit: 0
+  containers:
+  - name: cp-kafka-connect
+    image: confluentinc/cp-kafka-connect
+    tag: "6.1.9"
+    env:
+    - name: CONNECT_BOOTSTRAP_SERVERS
+      value: "cp-kafka:9092"
+    - name: CONNECT_REST_PORT
+      value: "8083"
+    - name: CONNECT_GROUP_ID
+      value: "cp-kafka-connect"
+    - name: CONNECT_CONFIG_STORAGE_TOPIC
+      value: _connect-configs
+    - name: CONNECT_OFFSET_STORAGE_TOPIC
+      value: _connect-offsets
+    - name: CONNECT_STATUS_STORAGE_TOPIC
+      value: _connect-status
+    - name: CONNECT_KEY_CONVERTER
+      value: org.apache.kafka.connect.storage.StringConverter
+    - name: CONNECT_VALUE_CONVERTER
+      value: io.confluent.connect.avro.AvroConverter
+    - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+      value: "http://cp-schema-registry:8081"
+    - name: CONNECT_REST_ADVERTISED_HOST_NAME
+      value: "cp-kafka-connect"
+    - name: CONNECT_LOG4J_APPENDER_STDOUT_LAYOUT_CONVERSIONPATTERN
+      value: "[%d] %p %X{connector.context}%m (%c:%L)%n"
+    - name: CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR
+      value: "1"
+    - name: CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR
+      value: "1"
+    - name: CONNECT_STATUS_STORAGE_REPLICATION_FACTOR
+      value: "1"
+    ports:
+    - port: 8083
+      interalPort: 30002
+      exteralPort: 30002
+    volumes:
+    - path: /usr/share/confluent-hub-components
+      nfs:
+        path: "/data/cp-kafka-connect/confluent-hub-components"
+        server: "192.168.1.7"
+        storage: 10Gi
