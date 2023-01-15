@@ -12,8 +12,8 @@ spec:
     http.api.url: http://data-transfer.test-maker.svc.cluster.local/api/UserQuestions?userId=${key.UserId}&questionId=${key.QuestionId}
     request.method: POST
     request.body.format: json
-    batch.max.size: 1,
-    batch.json.as.array: false,
+    batch.max.size: 1
+    batch.json.as.array: false
     headers: Content-Type:application/json
     confluent.topic.bootstrap.servers: cp-kafka:9092
     confluent.topic.replication.factor: 1
