@@ -15,7 +15,7 @@ servers:
             key: password
             optional: false
           - name: MSSQL_AGENT_ENABLED
-            key: "True"
+            key: "true"
         ports:
           - port: 1433
         volumes:
