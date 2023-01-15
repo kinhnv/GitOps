@@ -9,7 +9,7 @@ spec:
   tasksMax: 1
   config:
     topics: "mssql.dbo.UserQuestions"
-    http.api.url: "http://data-transfer.test-maker.svc.cluster.local/api/UserQuestions?userId=${UserId}&questionId=${QuestionId}"
+    http.api.url: "http://data-transfer.test-maker.svc.cluster.local/api/UserQuestions?userId=${key}&questionId=${key}"
     request.method: "POST"
     request.body.format: "json"
     batch.max.size: "1"
