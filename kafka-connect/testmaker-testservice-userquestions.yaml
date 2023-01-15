@@ -22,4 +22,7 @@ spec:
     reporter.result.topic.replication.factor: 1
     reporter.error.topic.name: error-responses
     reporter.error.topic.replication.factor: 1
+    transforms: Flatten
+    transforms.Flatten.type: org.apache.kafka.connect.transforms.Flatten$Key
+    transforms.Flatten.delimiter: .
 
