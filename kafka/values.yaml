@@ -48,6 +48,12 @@ servers:
       value: "local"
     - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
       value: "cp-kafka:9092"
+    - name: AUTH_TYPE
+      value: "LOGIN_FORM"
+    - name: SPRING_SECURITY_USER_NAME
+      value: admin
+    - name: SPRING_SECURITY_USER_PASSWORD
+      value: pass
     ports:
     - port: 8080
       interalPort: 30001
