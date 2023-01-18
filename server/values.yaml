@@ -23,7 +23,7 @@ servers:
             nfs:
               path: "/data/mssql"
               server: "192.168.1.7"
-              storage: 100Gi
+              storage: 10Gi
   - name: mongodb
     revisionHistoryLimit: 0
     containers:
@@ -70,7 +70,7 @@ servers:
             nfs:
               path: "/data/vault"
               server: "192.168.1.7"
-              storage: 50Gi
+              storage: 10Gi
   # - name: logstash
   #   revisionHistoryLimit: 0
   #   containers:
