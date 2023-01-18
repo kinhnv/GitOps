@@ -4,10 +4,10 @@ project:
 services:
   testService:
     label: test-service
-    tag: "682750433"
+    tag: "749775330"
   eventService:
     label: event-service
-    tag: "693311700"
+    tag: "748774937"
   userService:
     label: user-service
     tag: "674667117"
@@ -21,4 +21,4 @@ servers:
 clients:
   dataTransfer:
     label: data-transfer
-    tag: "747538304"
+    tag: "747552497"
