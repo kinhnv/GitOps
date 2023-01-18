@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafkaui-ngrok
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: kafkaui-ngrok
+  template:
+    metadata:
+      labels:
+        app: kafkaui-ngrok
+    spec:
+      containers:
+      - name: kafkaui-ngrok
+        image: ngrok/ngrok:alpine
+        env:
+          - name: HOST
+            value: "kafka-ui.kafka.svc.cluster.local"
+          - name: PORT
+            value: "8080"
+          - name: NGROK_AUTHTOKEN
+            value: "2Bn8Z3MzNBcGCbgJB6lU7qpWh5a_3eH4EeiM2iiVNNajKUaHW"
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command: ["/bin/sh"]
+        args: ["-c", "ngrok http $HOST:$PORT --log=stdout"]

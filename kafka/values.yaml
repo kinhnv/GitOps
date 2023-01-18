@@ -56,8 +56,6 @@ servers:
       value: ADMIN_PASSWORD
     ports:
     - port: 8080
-      interalPort: 30001
-      exteralPort: 30001
 # - name: cp-schema-registry
 #   revisionHistoryLimit: 0
 #   containers:
