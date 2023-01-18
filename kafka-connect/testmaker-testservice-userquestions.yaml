@@ -8,7 +8,7 @@ spec:
   class: io.confluent.connect.http.HttpSinkConnector
   tasksMax: 1
   config:
-    topics: "mssql.dbo.UserQuestions"
+    topics: "testmaker-testservice.dbo.UserQuestions"
     http.api.url: "http://data-transfer.test-maker.svc.cluster.local/api/UserQuestions"
     request.method: "POST"
     request.body.format: "json"
