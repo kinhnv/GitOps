@@ -53,7 +53,9 @@ servers:
     - name: SPRING_SECURITY_USER_NAME
       value: admin
     - name: SPRING_SECURITY_USER_PASSWORD
-      value: ADMIN_PASSWORD
+      secret: kafka-kafkaui-secret
+      key: ADMIN_PASSWORD
+      optional: false
     ports:
     - port: 8080
 # - name: cp-schema-registry
