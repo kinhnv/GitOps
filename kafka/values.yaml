@@ -53,7 +53,7 @@ servers:
     - name: SPRING_SECURITY_USER_NAME
       value: admin
     - name: SPRING_SECURITY_USER_PASSWORD
-      value: pass
+      value: ADMIN_PASSWORD
     ports:
     - port: 8080
       interalPort: 30001
