@@ -13,7 +13,7 @@ servers:
     volumes:
     - path: /var/lib/zookeeper
       nfs:
-        path: "/data/cp-zookeeper"
+        path: "/data1/cp-zookeeper"
         server: "192.168.1.7"
         storage: 10Gi
 - name: cp-kafka
@@ -34,7 +34,7 @@ servers:
     volumes:
     - path: /var/lib/kafka
       nfs:
-        path: "/data/cp-kafka"
+        path: "/data1/cp-kafka"
         server: "192.168.1.7"
         storage: 20Gi
 - name: kafka-ui

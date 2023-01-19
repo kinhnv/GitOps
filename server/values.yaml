@@ -21,7 +21,7 @@ servers:
         volumes:
           - path: /var/opt/mssql/data
             nfs:
-              path: "/data/mssql"
+              path: "/data1/mssql"
               server: "192.168.1.7"
               storage: 10Gi
   - name: mongodb
@@ -68,7 +68,7 @@ servers:
             subPath: vault-config.json
           - path: /var/opt/vault/data
             nfs:
-              path: "/data/vault"
+              path: "/data1/vault"
               server: "192.168.1.7"
               storage: 10Gi
   # - name: logstash
