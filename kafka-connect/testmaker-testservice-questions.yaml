@@ -18,8 +18,7 @@ spec:
     confluent.topic.bootstrap.servers: "cp-kafka:9092"
     confluent.topic.replication.factor: "1"
     reporter.bootstrap.servers: "cp-kafka:9092"
-    reporter.result.topic.name: "calling-http-questions-success-responses"
+    reporter.result.topic.name: "http-calling-success-responses"
     reporter.result.topic.replication.factor: "1"
-    reporter.error.topic.name: "calling-http-questions-error-responses"
+    reporter.error.topic.name: "http-calling-error-responses"
     reporter.error.topic.replication.factor: "1"
-    behavior.on.null.values: ignore
