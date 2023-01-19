@@ -7,7 +7,7 @@ services:
     tag: "750275302"
   eventService:
     label: event-service
-    tag: "750488249"
+    tag: "751461383"
   userService:
     label: user-service
     tag: "674667117"
