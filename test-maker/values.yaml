@@ -21,4 +21,4 @@ servers:
 clients:
   dataTransfer:
     label: data-transfer
-    tag: "751506348"
+    tag: "751510742"
