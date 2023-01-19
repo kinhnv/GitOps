@@ -7,7 +7,7 @@ services:
     tag: "750275302"
   eventService:
     label: event-service
-    tag: "750488249"
+    tag: "751720434"
   userService:
     label: user-service
     tag: "674667117"
@@ -21,4 +21,4 @@ servers:
 clients:
   dataTransfer:
     label: data-transfer
-    tag: "747552497"
+    tag: "752090936"
