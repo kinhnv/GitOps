@@ -2,7 +2,7 @@ registry: registry.server.svc.cluster.local:30000
 services:
   userService:
     label: user-service
-    tag: "753436778"
+    tag: "753444504"
 servers:
   identityServer:
     label: identity-server
