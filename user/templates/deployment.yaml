@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.services.userService.label }}"
-        image: "{{ .Values.registry }}/test-maker.{{ .Values.services.userService.label }}:{{ .Values.services.userService.tag }}"
+        image: "{{ .Values.registry }}/user.{{ .Values.services.userService.label }}:{{ .Values.services.userService.tag }}"
         ports:
         - containerPort: 80
         envFrom:
@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.servers.identityServer.label }}"
-        image: "{{ .Values.registry }}/test-maker.{{ .Values.servers.identityServer.label }}:{{ .Values.servers.identityServer.tag }}"
+        image: "{{ .Values.registry }}/user.{{ .Values.servers.identityServer.label }}:{{ .Values.servers.identityServer.tag }}"
         ports:
         - containerPort: 80
         envFrom:
