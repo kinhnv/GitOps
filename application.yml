@@ -106,6 +106,27 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: user
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kinhnv/System.Gitops.git
+    targetRevision: main
+    path: user
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: user
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: ngrok
   namespace: argocd
 spec:

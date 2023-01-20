@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.services.userService.label }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Values.services.userService.label }}"
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.services.userService.label }}"
+    spec:
+      containers:
+      - name: "{{ .Values.services.userService.label }}"
+        image: "{{ .Values.registry }}/test-maker.{{ .Values.services.userService.label }}:{{ .Values.services.userService.tag }}"
+        ports:
+        - containerPort: 80
+        envFrom:
+          - secretRef:
+              name: user-userservice-secret
+          - secretRef:
+              name: user-common-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.servers.identityServer.label }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Values.servers.identityServer.label }}"
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.servers.identityServer.label }}"
+    spec:
+      containers:
+      - name: "{{ .Values.servers.identityServer.label }}"
+        image: "{{ .Values.registry }}/test-maker.{{ .Values.servers.identityServer.label }}:{{ .Values.servers.identityServer.tag }}"
+        ports:
+        - containerPort: 80
+        envFrom:
+          - secretRef:
+              name: user-identityserver-secret
+          - secretRef:
+              name: user-common-secret
