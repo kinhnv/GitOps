@@ -3,9 +3,7 @@ services:
   userService:
     label: user-service
     tag: "753444504"
-  identityServer:
-    tag: "753490502"
 servers:
   identityServer:
     label: identity-server
-    tag: "674667117"
+    tag: "753490502"
