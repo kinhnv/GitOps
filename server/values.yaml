@@ -11,7 +11,7 @@ servers:
     - name: ACCEPT_EULA
       value: "Y"
     - name: SA_PASSWORD
-      secret: server-mssql-secretk
+      secret: server-mssql-secret
       key: password
       optional: false
     - name: MSSQL_AGENT_ENABLED
