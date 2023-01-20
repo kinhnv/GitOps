@@ -6,4 +6,4 @@ services:
 servers:
   identityServer:
     label: identity-server
-    tag: "753490502"
+    tag: "753493105"
