@@ -8,13 +8,7 @@ services:
   eventService:
     label: event-service
     tag: "753936975"
-  userService:
-    label: user-service
-    tag: "674667117"
 servers:
-  identityServer:
-    label: identity-server
-    tag: "674667117"
   apiGateway:
     label: api-gateway
     tag: "753911247"
