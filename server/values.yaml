@@ -86,12 +86,12 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
-- name: openvpn3
-  revisionHistoryLimit: 0
-  containers:
-  - name: openvpn3
-    image: ubuntu
-    tag: "latest"
+# - name: openvpn3
+#   revisionHistoryLimit: 0
+#   containers:
+#   - name: openvpn3
+#     image: ubuntu
+#     tag: "latest"
 endPoints:
 - name: docker
   ip: 192.168.1.7
