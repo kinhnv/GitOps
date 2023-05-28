@@ -4,20 +4,14 @@ project:
 services:
   testService:
     label: test-service
-    tag: "752258621"
+    tag: "881458685"
   eventService:
     label: event-service
-    tag: "752273069"
-  userService:
-    label: user-service
-    tag: "674667117"
+    tag: "881458940"
 servers:
-  identityServer:
-    label: identity-server
-    tag: "674667117"
   apiGateway:
     label: api-gateway
-    tag: "677857003"
+    tag: "753911247"
 clients:
   dataTransfer:
     label: data-transfer

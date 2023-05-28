@@ -18,6 +18,7 @@ servers:
       value: true
     ports:
     - port: 1433
+      exteralPort: 30001
     volumes:
     - path: /var/opt/mssql/data
       nfs:
@@ -34,6 +35,7 @@ servers:
       runAsRoot: true
     ports:
     - port: 27017
+      exteralPort: 30002
     envFrom:
     - secretRef:
         name: server-mongodb-secret
@@ -84,6 +86,12 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
+# - name: openvpn3
+#   revisionHistoryLimit: 0
+#   containers:
+#   - name: openvpn3
+#     image: ubuntu
+#     tag: "latest"
 endPoints:
 - name: docker
   ip: 192.168.1.7
