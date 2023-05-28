@@ -7,7 +7,7 @@ services:
     tag: "881458685"
   eventService:
     label: event-service
-    tag: "881451068"
+    tag: "881458940"
 servers:
   apiGateway:
     label: api-gateway
