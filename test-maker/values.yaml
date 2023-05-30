@@ -4,10 +4,10 @@ project:
 services:
   testService:
     label: test-service
-    tag: "881458685"
+    tag: "881472685"
   eventService:
     label: event-service
-    tag: "881458940"
+    tag: "881473720"
 servers:
   apiGateway:
     label: api-gateway
