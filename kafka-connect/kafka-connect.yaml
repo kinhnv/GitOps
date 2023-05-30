@@ -29,8 +29,4 @@ spec:
       artifacts:
       - type: zip
         url: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/debezium/debezium-connector-sqlserver/versions/1.9.7/debezium-debezium-connector-sqlserver-1.9.7.zip
-    - name: kafka-connect-http
-      artifacts:
-      - type: zip
-        url: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-http/versions/1.6.3/confluentinc-kafka-connect-http-1.6.3.zip
 
