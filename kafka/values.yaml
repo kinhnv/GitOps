@@ -31,6 +31,8 @@ servers:
       value: 1
     - name: KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL
       value: https://cp-schema-registry:8085
+    - name: SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL
+      value: SASL_SSL
     ports:
     - port: 9092
       exteralPort: 31000
