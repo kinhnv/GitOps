@@ -58,19 +58,19 @@ servers:
       optional: false
     ports:
     - port: 8080
-# - name: cp-schema-registry
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: cp-schema-registry
-#     image: confluentinc/cp-schema-registry
-#     tag: "6.1.9"
-#     env:
-#     - name: SCHEMA_REGISTRY_HOST_NAME
-#       value: "schema-registry"
-#     - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
-#       value: "cp-kafka:9092"
-#     ports:
-#     - port: 8081
+- name: cp-schema-registry
+  revisionHistoryLimit: 0
+  containers:
+  - name: cp-schema-registry
+    image: confluentinc/cp-schema-registry
+    tag: "6.1.9"
+    env:
+    - name: SCHEMA_REGISTRY_HOST_NAME
+      value: "schema-registry"
+    - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
+      value: "cp-kafka:9092"
+    ports:
+    - port: 8081
 # - name: cp-kafka-connect
 #   revisionHistoryLimit: 0
 #   containers:
