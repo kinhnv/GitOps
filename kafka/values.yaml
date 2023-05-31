@@ -30,9 +30,7 @@ servers:
     - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
       value: 1
     - name: KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL
-      value: https://cp-schema-registry:8085
-    - name: SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL
-      value: SASL_SSL
+      value: http://cp-schema-registry:8085
     ports:
     - port: 9092
       exteralPort: 31000
@@ -54,7 +52,7 @@ servers:
     - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
       value: "cp-kafka:9092"
     - name: SCHEMA_REGISTRY_LISTENERS
-      value: https://0.0.0.0:8085
+      value: http://0.0.0.0:8085
     ports:
     - port: 8085
       exteralPort: 31001
