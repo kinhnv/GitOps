@@ -30,7 +30,7 @@ servers:
     - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
       value: 1
     - name: KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL
-      value: https://schemaregistry:8085
+      value: https://cp-schema-registry:8085
     ports:
     - port: 9092
       exteralPort: 31000
@@ -48,11 +48,13 @@ servers:
     tag: "6.1.9"
     env:
     - name: SCHEMA_REGISTRY_HOST_NAME
-      value: "schema-registry"
+      value: "cp-schema-registry"
     - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
       value: "cp-kafka:9092"
+    - name: SCHEMA_REGISTRY_LISTENERS
+      value: https://0.0.0.0:8085
     ports:
-    - port: 8081
+    - port: 8085
       exteralPort: 31001
 - name: kafka-ui
   revisionHistoryLimit: 0
