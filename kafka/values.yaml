@@ -67,6 +67,8 @@ servers:
       value: "local"
     - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
       value: "cp-kafka:9092"
+    - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
+      value: "http://cp-schema-registry:8085"
     - name: AUTH_TYPE
       value: "LOGIN_FORM"
     - name: SPRING_SECURITY_USER_NAME
