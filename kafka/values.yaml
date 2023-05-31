@@ -29,6 +29,8 @@ servers:
       value: "PLAINTEXT://cp-kafka:9092"
     - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
       value: 1
+    - name: KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL
+      value: https://schemaregistry:8085
     ports:
     - port: 9092
       exteralPort: 31000
