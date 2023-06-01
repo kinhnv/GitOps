@@ -59,8 +59,6 @@ servers:
       value: "http"
     - name: SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL
       value: INFO
-    - name: SCHEMA_REGISTRY_KAFKASTORE_TOPIC
-      value: _schemas
     ports:
     - port: 8085
       exteralPort: 31001
