@@ -33,6 +33,8 @@ servers:
       value: K8S:PLAINTEXT,HOST:PLAINTEXT
     - name: KAFKA_INTER_BROKER_LISTENER_NAME
       value: K8S
+    - name: ALLOW_PLAINTEXT_LISTENER
+      value: "yes"
     - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
       value: 1
     - name: KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL
