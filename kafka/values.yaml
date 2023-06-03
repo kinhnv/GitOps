@@ -28,7 +28,7 @@ servers:
     - name: KAFKA_LISTENERS
       value: INTERNAL://:9092,HOST://:9093
     - name: KAFKA_ADVERTISED_LISTENERS
-      value: INTERNAL://cp-kafka:9092,HOST://192.168.1.7:31000
+      value: INTERNAL://cp-kafka.kafka.svc.cluster.local:9092,HOST://192.168.1.7:31000
     - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
       value: INTERNAL:PLAINTEXT,HOST:PLAINTEXT
     - name: KAFKA_INTER_BROKER_LISTENER_NAME
@@ -47,30 +47,30 @@ servers:
     #     path: "/data1/cp-kafka"
     #     server: "192.168.1.7"
     #     storage: 20Gi
-# - name: cp-schema-registry
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: cp-schema-registry
-#     image: confluentinc/cp-schema-registry
-#     tag: "6.1.9"
-#     env:
-#     - name: SCHEMA_REGISTRY_HOST_NAME
-#       value: "cp-schema-registry"
-#     - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
-#       value: "PLAINTEXT://cp-kafka:9092"
-#     - name: SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL
-#       value: "PLAINTEXT"
-#     - name: SCHEMA_REGISTRY_LISTENERS
-#       value: http://0.0.0.0:8085
-#     - name: SCHEMA_REGISTRY_SCHEMA_REGISTRY_INTER_INSTANCE_PROTOCOL
-#       value: "http"
-#     - name: SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL
-#       value: INFO
-#     - name: SCHEMA_REGISTRY_KAFKASTORE_TOPIC
-#       value: _schemas
-#     ports:
-#     - port: 8085
-#       exteralPort: 31001
+- name: cp-schema-registry
+  revisionHistoryLimit: 0
+  containers:
+  - name: cp-schema-registry
+    image: confluentinc/cp-schema-registry
+    tag: "6.1.9"
+    env:
+    - name: SCHEMA_REGISTRY_HOST_NAME
+      value: "cp-schema-registry"
+    - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
+      value: "PLAINTEXT://cp-kafka.kafka.svc.cluster.local:9092"
+    - name: SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL
+      value: "PLAINTEXT"
+    - name: SCHEMA_REGISTRY_LISTENERS
+      value: http://0.0.0.0:8085
+    - name: SCHEMA_REGISTRY_SCHEMA_REGISTRY_INTER_INSTANCE_PROTOCOL
+      value: "http"
+    - name: SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL
+      value: INFO
+    - name: SCHEMA_REGISTRY_KAFKASTORE_TOPIC
+      value: _schemas
+    ports:
+    - port: 8085
+      exteralPort: 31001
 - name: kafka-ui
   revisionHistoryLimit: 0
   containers:
@@ -81,9 +81,9 @@ servers:
     - name: KAFKA_CLUSTERS_0_NAME
       value: "local"
     - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-      value: "cp-kafka:9092"
-    # - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
-    #   value: "http://cp-schema-registry:8085"
+      value: "cp-kafka.kafka.svc.cluster.local:9092"
+    - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
+      value: "http://cp-schema-registry:8085"
     - name: AUTH_TYPE
       value: "LOGIN_FORM"
     - name: SPRING_SECURITY_USER_NAME
