@@ -25,12 +25,12 @@ servers:
     env:
     - name: KAFKA_ZOOKEEPER_CONNECT
       value: "cp-zookeeper:2181"
-    - name: KAFKA_LISTENERS
-      value: "K8S://cp-kafka:9092,HOST://192.168.1.7:31000"
     - name: KAFKA_ADVERTISED_LISTENERS
       value: "K8S://cp-kafka:9092,HOST://192.168.1.7:31000"
     - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
       value: K8S:PLAINTEXT,HOST:PLAINTEXT
+    - name: KAFKA_INTER_BROKER_LISTENER_NAME
+      value: K8S
     - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
       value: 1
     - name: KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL
