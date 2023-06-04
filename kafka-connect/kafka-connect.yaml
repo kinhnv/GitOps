@@ -14,7 +14,9 @@ spec:
     status.storage.topic: kafka-connect-cluster-status
     cleanup.policy: compact
     key.converter: org.apache.kafka.connect.storage.StringConverter
+    key.converter.schema.registry.url: http://cp-schema-registry:8085
     value.converter: io.confluent.connect.protobuf.ProtobufConverter
+    value.converter.schema.registry.url: http://cp-schema-registry:8085
     key.converter.schemas.enable: true
     value.converter.schemas.enable: true
     config.storage.replication.factor: 1
