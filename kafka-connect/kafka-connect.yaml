@@ -25,8 +25,12 @@ spec:
       type: docker
       image: registry.server.svc.cluster.local:30000/kafka-connect:latest
     plugins:
-    - name: debezium-connector-sqlserver
+    - name: debezium-debezium-connector-sqlserver
       artifacts:
       - type: zip
         url: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/debezium/debezium-connector-sqlserver/versions/1.9.7/debezium-debezium-connector-sqlserver-1.9.7.zip
+    - name: confluentinc-kafka-connect-protobuf-converter
+      artifacts:
+      - type: zip
+        url: https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-protobuf-converter/versions/7.4.0/confluentinc-kafka-connect-protobuf-converter-7.4.0.zip
 
