@@ -12,7 +12,7 @@ spec:
     offset.storage.topic: kafka-connect-cluster-offsets
     config.storage.topic: kafka-connect-cluster-configs
     status.storage.topic: kafka-connect-cluster-status
-    cleanup.policy: delete
+    cleanup.policy: compact
     key.converter: io.confluent.connect.protobuf.ProtobufConverter
     key.converter.schema.registry.url: http://cp-schema-registry:8085
     value.converter: io.confluent.connect.protobuf.ProtobufConverter
