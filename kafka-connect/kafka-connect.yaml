@@ -6,7 +6,7 @@ metadata:
     strimzi.io/use-connector-resources: "true"
 spec:
   replicas: 1
-  bootstrapServers: cp-kafka:9092
+  bootstrapServers: cp-kafka.kafka.svc.cluster.local:9092
   config:
     group.id: kafka-connect-cluster
     offset.storage.topic: kafka-connect-cluster-offsets
