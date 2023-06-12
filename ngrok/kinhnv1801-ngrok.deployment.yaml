@@ -32,6 +32,8 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 1000
+          runAsGroup: 3000
+          fsGroup: 2000
         command: ["/bin/sh"]
         args: ["-c", "/custom-entrypoint.sh"]
         volumeMounts:
