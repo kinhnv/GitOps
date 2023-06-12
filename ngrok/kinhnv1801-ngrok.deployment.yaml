@@ -32,6 +32,7 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
+          runAsGroup: 0
           fsGroup: 0
         command: ["/bin/sh"]
         args: ["-c", "/custom-entrypoint.sh"]
