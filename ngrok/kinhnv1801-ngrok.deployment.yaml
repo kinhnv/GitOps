@@ -32,15 +32,15 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
-          runAsGroup: 0
-          fsGroup: 0
         command: ["/bin/sh"]
-        args: ["-c", "/custom-entrypoint.sh"]
+        args: ["-c", "chmod /custom-entrypoint.sh && /custom-entrypoint.sh"]
         volumeMounts:
         - mountPath: /custom-entrypoint.sh
           name: custom-entrypoint
+          readOnly: false
         - mountPath: /push-ngrok-endpoint.sh
           name: push-ngrok-endpoint
+          readOnly: false
       volumes:
       - name: custom-entrypoint
         configMap:
