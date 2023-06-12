@@ -39,13 +39,13 @@ spec:
         - name: push-ngrok-endpoint
           mountPath: /push-ngrok-endpoint.sh
       volumes:
-      - name: custom-entrypoint
-        configMap:
+      - configMap:
+          defaultMode: 0744
           name: custom-entrypoint
+        name: custom-entrypoint
+      - configMap:
           defaultMode: 0744
-      - name: push-ngrok-endpoint
-        configMap:
           name: push-ngrok-endpoint
-          defaultMode: 0744
+        name: push-ngrok-endpoint
 
 
