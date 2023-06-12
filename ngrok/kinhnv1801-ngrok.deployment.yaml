@@ -21,7 +21,7 @@ spec:
           - name: PORT
             value: "8200"
           - name: NGROK_AUTHTOKEN
-            value: "2Bn8Z3MzNBcGCbgJB6lU7qpWh5a_3eH4EeiM2iiVNNajKUaHW"
+            value: "284U6rgVB8IfyjhaIKvWAeQcuEE_9JLtkkMgUsyehLMU7HMd"
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
