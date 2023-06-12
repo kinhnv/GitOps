@@ -33,7 +33,7 @@ spec:
           allowPrivilegeEscalation: false
           runAsUser: 0
         command: ["/bin/sh"]
-        args: ["-c", "chmod 777 /custom-entrypoint.sh && /custom-entrypoint.sh"]
+        args: ["-c", "/custom-entrypoint.sh"]
         volumeMounts:
         - mountPath: /custom-entrypoint.sh
           name: custom-entrypoint
