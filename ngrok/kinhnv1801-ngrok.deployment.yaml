@@ -14,19 +14,36 @@ spec:
     spec:
       containers:
       - name: kinhnv1801-ngrok
-        image: kinhnv1801/ngrok:1
+        image: ngrok/ngrok:alpine
         env:
+          - name: TYPE
+            value: http
           - name: HOST
             value: "vault.server.svc.cluster.local"
           - name: PORT
             value: "8200"
           - name: NGROK_AUTHTOKEN
             value: "284U6rgVB8IfyjhaIKvWAeQcuEE_9JLtkkMgUsyehLMU7HMd"
+          - name: GITHUB_FILE
+            value: "kinhnv1801.json"
         envFrom:
           - secretRef:
               name: ngrok-common-secret
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
-        command: ["/bin/sh"]
-        args: ["-c", "/custom-entrypoint.sh http $HOST:$PORT --log=/ngrok-output.txt"]
+        command: ["/custom-entrypoint.sh"]
+        volumeMounts:
+        - mountPath: /custom-entrypoint.sh
+          name: custom-entrypoint
+        - mountPath: /push-ngrok-endpoint.sh
+          name: push-ngrok-endpoint
+      volumes:
+      - name: custom-entrypoint
+        configMap:
+          name: custom-entrypoint
+      - name: push-ngrok-endpoint
+        configMap:
+          name: push-ngrok-endpoint
+
+
