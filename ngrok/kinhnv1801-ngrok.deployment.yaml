@@ -32,8 +32,7 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
-        command: ["/bin/sh"]
-        args: ["-c", "/custom-entrypoint.sh"]
+        command: ["/custom-entrypoint.sh"]
         volumeMounts:
         - name: custom-entrypoint
           mountPath: /custom-entrypoint.sh
