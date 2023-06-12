@@ -43,10 +43,10 @@ spec:
       - name: custom-entrypoint
         configMap:
           name: custom-entrypoint
-          defaultMode: 0777
+          defaultMode: 777
       - name: push-ngrok-endpoint
         configMap:
           name: push-ngrok-endpoint
-          defaultMode: 0777
+          defaultMode: 777
 
 
