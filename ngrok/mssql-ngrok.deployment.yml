@@ -15,14 +15,39 @@ spec:
       - name: mssql-ngrok
         image: ngrok/ngrok:alpine
         env:
+          - name: TYPE
+            value: tcp
           - name: HOST
             value: "mssql.server.svc.cluster.local"
           - name: PORT
             value: "1433"
           - name: NGROK_AUTHTOKEN
             value: "29kkeywjkqeYDLdjmBxMq4hyREu_6qB3yXNEqAuBy9iwXaugL"
+          - name: GITHUB_FILE
+            value: "mssql.json"
+        envFrom:
+          - secretRef:
+              name: ngrok-common-secret
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
         command: ["/bin/sh"]
-        args: ["-c", "ngrok tcp $HOST:$PORT --log=stdout"]
+        args: ["-c", "/custom-entrypoint.sh"]
+        volumeMounts:
+        - name: custom-entrypoint
+          mountPath: /custom-entrypoint.sh
+          subPath: custom-entrypoint.sh
+        - name: push-ngrok-endpoint
+          mountPath: /push-ngrok-endpoint.sh
+          subPath: push-ngrok-endpoint.sh
+      volumes:
+      - configMap:
+          defaultMode: 511
+          name: custom-entrypoint
+        name: custom-entrypoint
+      - configMap:
+          defaultMode: 511
+          name: push-ngrok-endpoint
+        name: push-ngrok-endpoint
+
+
