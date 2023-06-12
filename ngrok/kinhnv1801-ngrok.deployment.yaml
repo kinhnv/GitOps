@@ -37,8 +37,10 @@ spec:
         volumeMounts:
         - name: custom-entrypoint
           mountPath: /custom-entrypoint.sh
+          subPath: custom-entrypoint.sh
         - name: push-ngrok-endpoint
           mountPath: /push-ngrok-endpoint.sh
+          subPath: push-ngrok-endpoint.sh
       volumes:
       - configMap:
           defaultMode: 511
