@@ -31,9 +31,8 @@ spec:
               name: ngrok-common-secret
         securityContext:
           allowPrivilegeEscalation: false
-          runAsUser: 1000
-          runAsGroup: 3000
-          fsGroup: 2000
+          runAsUser: 0
+          fsGroup: 0
         command: ["/bin/sh"]
         args: ["-c", "/custom-entrypoint.sh"]
         volumeMounts:
