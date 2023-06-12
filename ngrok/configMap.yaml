@@ -38,7 +38,9 @@ metadata:
   name: push-ngrok-endpoint
 data:
   push-ngrok-endpoint.sh: |
-    sleep 5
+    sleep 3
+    apk add git
+    apk add openssh
     mkdir -p /root/.ssh
     eval "$(ssh-agent -s)"
     echo "$SSH_PRIVATE_KEY" | tr -d '\r' > /root/.ssh/id_rsa
