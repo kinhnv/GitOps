@@ -22,6 +22,9 @@ spec:
             value: "8200"
           - name: NGROK_AUTHTOKEN
             value: "284U6rgVB8IfyjhaIKvWAeQcuEE_9JLtkkMgUsyehLMU7HMd"
+        envFrom:
+          - secretRef:
+              name: ngrok-common-secret
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
