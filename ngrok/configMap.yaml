@@ -38,7 +38,7 @@ metadata:
   name: push-ngrok-endpoint
 data:
   push-ngrok-endpoint.sh: |
-    sleep 3
+    while ! grep "started tunnel" /ngrok-output.txt;do echo "not found";sleep 1;done
     apk add git
     apk add openssh
     mkdir -p /root/.ssh
