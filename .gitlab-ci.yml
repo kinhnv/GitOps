@@ -19,5 +19,5 @@ publish-code-job:
       fi
     - >
       if [ !`git branch --list main` ]; then
-        git checkout -b main && git push -u origin main
+        git checkout -b main && git push origin main --no-thin
       fi
