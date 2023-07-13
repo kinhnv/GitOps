@@ -24,7 +24,7 @@ servers:
       nfs:
         path: "/data/mssql"
         server: "192.168.1.7"
-        storage: 10Gi
+        storage: 50Gi
 - name: mongodb
   revisionHistoryLimit: 0
   containers:
