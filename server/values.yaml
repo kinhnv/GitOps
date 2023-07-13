@@ -72,7 +72,7 @@ servers:
       nfs:
         path: "/data/vault"
         server: "192.168.1.7"
-        storage: 50Gi
+        storage: 10Gi
 - name: gitlab-runner
   revisionHistoryLimit: 0
   containers:
