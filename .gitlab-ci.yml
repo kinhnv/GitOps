@@ -13,14 +13,15 @@ publish-code-job:
     - main
   script:
     - git remote set-url origin $GITHUB_URL
-    - >
-      if [ `git branch --list main` ]; then
-        echo "push to existing branch"; 
-        git push -u origin HEAD:main
-      else
-        echo "create new branch";
-        git repack;
-        git config --global core.compression 0;
-        git checkout -b main; 
-        git push -u origin main
-      fi
+    - cat .git/config
+    # - >
+    #   if [ `git branch --list main` ]; then
+    #     echo "push to existing branch"; 
+    #     git push -u origin HEAD:main
+    #   else
+    #     echo "create new branch";
+    #     git repack;
+    #     git config --global core.compression 0;
+    #     git checkout -b main; 
+    #     git push -u origin main
+    #   fi
