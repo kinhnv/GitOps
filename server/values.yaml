@@ -12,7 +12,7 @@ servers:
       value: "Y"
     - name: SA_PASSWORD
       secret: server-mssql-secret
-      key: password
+      key: MSSQL_INITDB_SA_PASSWORD
       optional: false
     - name: MSSQL_AGENT_ENABLED
       value: true
