@@ -13,4 +13,10 @@ publish-code-job:
     - main
   script:
     - git remote set-url origin $GITHUB_URL 
-    - sh https://raw.githubusercontent.com/kinhnv/System.CommonPipeline/main/.push-code.sh
+    - >
+      if [ `git branch --list main` ]; then
+        git push -u origin HEAD:main
+      else
+        git checkout -b main
+        git push origin main
+      fi
