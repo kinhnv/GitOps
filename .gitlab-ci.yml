@@ -19,14 +19,14 @@ publish-code-job:
     - git config pack.packSizeLimit 2047m;
     - git config pack.windowMemory 2047m;
     - cat .git/config
-    # - >
-    #   if [ `git branch --list main` ]; then
-    #     echo "push to existing branch"; 
-    #     git push -u origin HEAD:main
-    #   else
-    #     echo "create new branch";
-    #     git repack;
-    #     git config --global core.compression 0;
-    #     git checkout -b main; 
-    #     git push -u origin main
-    #   fi
+    - >
+      if [ `git branch --list main` ]; then
+        echo "push to existing branch"; 
+        git push -u origin HEAD:main
+      else
+        echo "create new branch";
+        git repack;
+        git config --global core.compression 0;
+        git checkout -b main; 
+        git push -u origin main
+      fi
