@@ -15,9 +15,7 @@ publish-code-job:
     - git remote set-url origin $GITHUB_URL 
     - >
       if [ `git branch --list main` ]; then
-        git push -u origin HEAD:main
-      fi
-    - >
-      if [ !`git branch --list main` ]; then
-        git checkout -b main && git rm -r --cached . && git fetch && git push origin main --no-thin
+        echo "push to existing branch"; git push -u origin HEAD:main
+      else
+        echo "create new branch"; git checkout -b main; git push origin main
       fi
