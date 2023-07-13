@@ -13,9 +13,9 @@ servers:
     volumes:
     - path: /var/lib/zookeeper
       nfs:
-        path: "/data1/cp-zookeeper"
+        path: "/data/cp-zookeeper"
         server: "192.168.1.7"
-        storage: 10Gi
+        storage: 20Gi
 - name: cp-kafka
   revisionHistoryLimit: 0
   containers:
@@ -44,9 +44,9 @@ servers:
     volumes:
     - path: /var/lib/kafka
       nfs:
-        path: "/data1/cp-kafka"
+        path: "/data/cp-kafka"
         server: "192.168.1.7"
-        storage: 20Gi
+        storage: 50Gi
 - name: cp-schema-registry
   revisionHistoryLimit: 0
   containers:
