@@ -28,5 +28,5 @@ publish-code-job:
         git repack;
         git config --global core.compression 0;
         git checkout -b main; 
-        git push -u origin main
+        git push -u origin main --no-thin;
       fi
