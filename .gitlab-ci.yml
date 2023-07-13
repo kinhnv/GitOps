@@ -16,6 +16,8 @@ publish-code-job:
     - >
       if [ `git branch --list main` ]; then
         git push -u origin HEAD:main
-      else
+      fi
+    - >
+      if [ !`git branch --list main` ]; then
         git checkout -b main && git push origin main
       fi
