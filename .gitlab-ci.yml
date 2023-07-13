@@ -19,6 +19,7 @@ publish-code-job:
         git push -u origin HEAD:main
       else
         echo "create new branch";
+        git config --global core.compression 0;
         git checkout -b main; 
         git push -u origin main
       fi
