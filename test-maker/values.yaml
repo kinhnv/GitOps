@@ -4,10 +4,10 @@ project:
 services:
   testService:
     label: test-service
-    tag: "896245132"
+    tag: "929945691"
   eventService:
     label: event-service
-    tag: "890001292"
+    tag: "930296909"
 servers:
   apiGateway:
     label: api-gateway
@@ -15,4 +15,4 @@ servers:
 clients:
   dataTransfer:
     label: data-transfer
-    tag: "890036248"
+    tag: "929987716"
