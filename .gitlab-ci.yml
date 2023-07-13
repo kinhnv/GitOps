@@ -24,9 +24,5 @@ publish-code-job:
         echo "push to existing branch"; 
         git push -u origin HEAD:main
       else
-        echo "create new branch";
-        git repack;
-        git config --global core.compression 0;
-        git checkout -b main; 
-        git push -u origin main --no-thin;
+        git push -u origin HEAD:refs/heads/main;
       fi
