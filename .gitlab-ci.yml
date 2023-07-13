@@ -18,8 +18,7 @@ publish-code-job:
         echo "push to existing branch"; 
         git push -u origin HEAD:main
       else
-        echo "create new branch"; 
-        git rm -r --cached .;
+        echo "create new branch";
         git fetch;
         git checkout -b main; 
         git push origin main
