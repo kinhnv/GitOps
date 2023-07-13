@@ -1,0 +1,34 @@
+{{ range .Values.servers }}
+{{- range $containerIndex, $containerValue := .containers }}
+{{- range $volumeIndex, $volumeValue := $containerValue.volumes }}
+{{- if $volumeValue.nfs }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "{{ $containerValue.name }}-{{ $volumeIndex }}-volume"
+spec:
+  storageClassName: "{{ $containerValue.name }}-{{ $volumeIndex }}-volume"
+  capacity:
+    storage: {{ $volumeValue.nfs.storage }}
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: "{{ $volumeValue.nfs.path }}"
+    server: "{{ $volumeValue.nfs.server }}"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: "{{ $containerValue.name }}-{{ $volumeIndex }}-volume-claim"
+spec:
+  storageClassName: "{{ $containerValue.name }}-{{ $volumeIndex }}-volume"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ $volumeValue.nfs.storage }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
+{{ end }}

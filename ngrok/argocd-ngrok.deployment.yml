@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-ngrok
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: argocd-ngrok
+  template:
+    metadata:
+      labels:
+        app: argocd-ngrok
+    spec:
+      containers:
+      - name: argocd-ngrok
+        image: ngrok/ngrok:alpine
+        env:
+          - name: TYPE
+            value: http
+          - name: HOST
+            value: "argocd-server.argocd.svc.cluster.local"
+          - name: PORT
+            value: "443"
+          - name: NGROK_AUTHTOKEN
+            value: "28vLa0hWj5Sh5z7Bv62qW9BHjT9_2NPFbCjujxATpVqpUkKqA"
+          - name: GITHUB_FILE
+            value: "argocd.json"
+        envFrom:
+          - secretRef:
+              name: ngrok-common-secret
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command: ["/bin/sh"]
+        args: ["-c", "/custom-entrypoint.sh"]
+        volumeMounts:
+        - name: custom-entrypoint
+          mountPath: /custom-entrypoint.sh
+          subPath: custom-entrypoint.sh
+        - name: push-ngrok-endpoint
+          mountPath: /push-ngrok-endpoint.sh
+          subPath: push-ngrok-endpoint.sh
+      volumes:
+      - configMap:
+          defaultMode: 511
+          name: custom-entrypoint
+        name: custom-entrypoint
+      - configMap:
+          defaultMode: 511
+          name: push-ngrok-endpoint
+        name: push-ngrok-endpoint
+
