@@ -19,5 +19,5 @@ publish-code-job:
       fi
     - >
       if [ !`git branch --list main` ]; then
-        git checkout -b main && git rm -r --cached && git fetch && git push origin main --no-thin
+        git checkout -b main && git rm -r --cached . && git fetch . && git push origin main --no-thin
       fi
