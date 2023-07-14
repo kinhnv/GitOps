@@ -200,7 +200,7 @@ spec:
     path: common
   destination:
     server: https://kubernetes.default.svc
-    namespace: kafka
+    namespace: common
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
