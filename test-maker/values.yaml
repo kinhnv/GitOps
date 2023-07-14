@@ -8,10 +8,6 @@ services:
   eventService:
     label: event-service
     tag: "930407277"
-servers:
-  apiGateway:
-    label: api-gateway
-    tag: "753911247"
 clients:
   dataTransfer:
     label: data-transfer

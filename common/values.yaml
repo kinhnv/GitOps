@@ -1,0 +1,10 @@
+registry: registry.server.svc.cluster.local:30000
+project:
+  label: common
+servers:
+  apiGateway:
+    label: api-gateway
+    tag: "753911247"
+  identityServer:
+    label: identity-server
+    tag: "930406723"

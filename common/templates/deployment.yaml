@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.servers.apiGateway.label }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Values.servers.apiGateway.label }}"
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.servers.apiGateway.label }}"
+    spec:
+      containers:
+      - name: "{{ .Values.servers.apiGateway.label }}"
+        image: "{{ .Values.registry }}/common.{{ .Values.servers.apiGateway.label }}:{{ .Values.servers.apiGateway.tag }}"
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.servers.identityServer.label }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Values.servers.identityServer.label }}"
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.servers.identityServer.label }}"
+    spec:
+      containers:
+      - name: "{{ .Values.servers.identityServer.label }}"
+        image: "{{ .Values.registry }}/common.{{ .Values.servers.identityServer.label }}:{{ .Values.servers.identityServer.tag }}"
+        ports:
+        - containerPort: 80
+        envFrom:
+          - secretRef:
+              name: common-identityserver-secret
+          - secretRef:
+              name: common-common-secret

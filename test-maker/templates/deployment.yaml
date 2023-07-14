@@ -51,26 +51,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ .Values.servers.apiGateway.label }}"
-spec:
-  selector:
-    matchLabels:
-      app: "{{ .Values.servers.apiGateway.label }}"
-  revisionHistoryLimit: 0
-  template:
-    metadata:
-      labels:
-        app: "{{ .Values.servers.apiGateway.label }}"
-    spec:
-      containers:
-      - name: "{{ .Values.servers.apiGateway.label }}"
-        image: "{{ .Values.registry }}/test-maker.{{ .Values.servers.apiGateway.label }}:{{ .Values.servers.apiGateway.tag }}"
-        ports:
-        - containerPort: 80
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: "{{ .Values.clients.dataTransfer.label }}"
 spec:
   selector:
