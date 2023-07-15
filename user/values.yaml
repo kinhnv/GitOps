@@ -2,6 +2,6 @@ registry: registry.server.svc.cluster.local:30000
 services:
   userService:
     label: user-service
-    tag: "880976304"
+    tag: "932304811"
   eventService:
     tag: "932304475"
