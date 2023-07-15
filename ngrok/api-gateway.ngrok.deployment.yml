@@ -19,7 +19,7 @@ spec:
           - name: TYPE
             value: http
           - name: HOST
-            value: "api-gateway.test-maker.svc.cluster.local"
+            value: "api-gateway.common.svc.cluster.local"
           - name: PORT
             value: "80"
           - name: NGROK_AUTHTOKEN
