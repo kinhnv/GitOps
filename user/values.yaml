@@ -3,3 +3,5 @@ services:
   userService:
     label: user-service
     tag: "880976304"
+  eventService:
+    tag: "932304475"
