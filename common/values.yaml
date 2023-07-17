@@ -8,3 +8,6 @@ servers:
   identityServer:
     label: identity-server
     tag: "932290389"
+common:
+  fileServer:
+    tag: "934117963"
