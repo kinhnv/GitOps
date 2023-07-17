@@ -9,4 +9,5 @@ servers:
     label: identity-server
     tag: "932290389"
   fileServer:
+    label: file-server
     tag: "934161467"
