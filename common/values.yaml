@@ -10,4 +10,4 @@ servers:
     tag: "932290389"
   fileServer:
     label: file-server
-    tag: "934184956"
+    tag: "934189467"
