@@ -42,3 +42,28 @@ spec:
               name: common-identityserver-secret
           - secretRef:
               name: common-common-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.servers.fileServer.label }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Values.servers.fileServer.label }}"
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.servers.fileServer.label }}"
+    spec:
+      containers:
+      - name: "{{ .Values.servers.fileServer.label }}"
+        image: "{{ .Values.registry }}/common.{{ .Values.servers.fileServer.label }}:{{ .Values.servers.fileServer.tag }}"
+        ports:
+        - containerPort: 80
+        envFrom:
+          - secretRef:
+              name: common-fileServer-secret
+          - secretRef:
+              name: common-common-secret
