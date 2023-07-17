@@ -64,6 +64,6 @@ spec:
         - containerPort: 80
         envFrom:
           - secretRef:
-              name: common-fileServer-secret
+              name: common-fileserver-secret
           - secretRef:
               name: common-common-secret
