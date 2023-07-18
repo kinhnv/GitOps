@@ -19,10 +19,10 @@ spec:
           - name: TYPE
             value: http
           - name: HOST
-            value: "identity-server.common.svc.cluster.local"
+            value: "file-server.common.svc.cluster.local"
           - name: PORT
             value: "80"
-          # identityserver.brothers.80@gmail.com
+          # fileserver.brothers.80@gmail.com
           - name: NGROK_AUTHTOKEN
             value: "2SkGvzTRczt3jBYXithy6A3SFGQ_2E4QQhCa7oBD2Cji7Z6ML"
           - name: GITHUB_FILE
