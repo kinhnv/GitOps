@@ -11,4 +11,4 @@ services:
 clients:
   dataTransfer:
     label: data-transfer
-    tag: "942393366"
+    tag: "945142108"
