@@ -28,7 +28,7 @@ spec:
   build:
     output:
       type: docker
-      image: kinhnv1801/kafka-connect:latest
+      image: registry.gitlab.com/i3rothers/platform/gitops/kafka-connect:latest
     plugins:
     - name: debezium-debezium-connector-sqlserver
       artifacts:
