@@ -11,8 +11,8 @@ spec:
     database.server.name: "testmaker-testservice"
     database.hostname: "mssql.server.svc.cluster.local"
     database.port: "1433"
-    database.user: "sa"
-    database.password: "VanKinh1996"
+    database.user: ${secrets:kafka/kafka-secret:DATABASE_USER}
+    database.password: ${secrets:kafka/kafka-secret:DATABASE_PASSWORD}
     database.dbname: "TestMaker.TestService"
     table.include.list: "dbo.UserQuestions, dbo.Questions"
     database.history.kafka.bootstrap.servers: "cp-kafka:9092"

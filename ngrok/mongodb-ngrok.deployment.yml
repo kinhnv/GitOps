@@ -27,7 +27,7 @@ spec:
             value: "mongodb.json"
         envFrom:
           - secretRef:
-              name: ngrok-common-secret
+              name: common-secret
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0

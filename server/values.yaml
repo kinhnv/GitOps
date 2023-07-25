@@ -11,7 +11,7 @@ servers:
     - name: ACCEPT_EULA
       value: "Y"
     - name: SA_PASSWORD
-      secret: server-mssql-secret
+      secret: mssql-secret
       key: MSSQL_INITDB_SA_PASSWORD
       optional: false
     - name: MSSQL_AGENT_ENABLED
@@ -38,41 +38,7 @@ servers:
       exteralPort: 30002
     envFrom:
     - secretRef:
-        name: server-mongodb-secret
-- name: registry
-  revisionHistoryLimit: 0
-  containers:
-  - name: registry
-    image: registry
-    tag: 2
-    ports:
-    - port: 5000
-      interalPort: 30000
-      exteralPort: 30000
-- name: vault
-  revisionHistoryLimit: 0
-  containers:
-  - name: vault
-    image: vault
-    tag: 1.9.9
-    ports:
-    - port: 8200
-    securityContext:
-      capabilities:
-        add:
-        - IPC_LOCK
-      runAsRoot: true
-    args:
-    - "server"
-    volumes:
-    - path: /vault/config/vault-config.json
-      configMap: vault
-      subPath: vault-config.json
-    - path: /var/opt/vault/data
-      nfs:
-        path: "/data/vault"
-        server: "192.168.1.7"
-        storage: 10Gi
+        name: mongodb-secret
 - name: gitlab-runner
   revisionHistoryLimit: 0
   containers:
@@ -86,6 +52,40 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
+# - name: registry
+#   revisionHistoryLimit: 0
+#   containers:
+#   - name: registry
+#     image: registry
+#     tag: 2
+#     ports:
+#     - port: 5000
+#       interalPort: 30000
+#       exteralPort: 30000
+# - name: vault
+#   revisionHistoryLimit: 0
+#   containers:
+#   - name: vault
+#     image: vault
+#     tag: 1.9.9
+#     ports:
+#     - port: 8200
+#     securityContext:
+#       capabilities:
+#         add:
+#         - IPC_LOCK
+#       runAsRoot: true
+#     args:
+#     - "server"
+#     volumes:
+#     - path: /vault/config/vault-config.json
+#       configMap: vault
+#       subPath: vault-config.json
+#     - path: /var/opt/vault/data
+#       nfs:
+#         path: "/data/vault"
+#         server: "192.168.1.7"
+#         storage: 10Gi
 # - name: openvpn3
 #   revisionHistoryLimit: 0
 #   containers:

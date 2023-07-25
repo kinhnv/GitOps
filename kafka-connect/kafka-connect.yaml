@@ -22,6 +22,9 @@ spec:
     config.storage.replication.factor: 1
     offset.storage.replication.factor: 1
     status.storage.replication.factor: 1
+    config.providers: secrets,configmaps
+    config.providers.secrets.class: io.strimzi.kafka.KubernetesSecretConfigProvider
+    config.providers.configmaps.class: io.strimzi.kafka.KubernetesConfigMapConfigProvider
   build:
     output:
       type: docker

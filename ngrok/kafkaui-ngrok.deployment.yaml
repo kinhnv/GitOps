@@ -28,7 +28,7 @@ spec:
             value: "kafkaui.json"
         envFrom:
           - secretRef:
-              name: ngrok-common-secret
+              name: common-secret
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0

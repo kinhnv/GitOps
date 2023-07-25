@@ -89,7 +89,7 @@ servers:
     - name: SPRING_SECURITY_USER_NAME
       value: admin
     - name: SPRING_SECURITY_USER_PASSWORD
-      secret: kafka-kafkaui-secret
+      secret: kafka-ui-secret
       key: ADMIN_PASSWORD
       optional: false
     ports:
