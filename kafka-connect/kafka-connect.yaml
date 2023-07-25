@@ -26,9 +26,6 @@ spec:
     config.providers.secrets.class: io.strimzi.kafka.KubernetesSecretConfigProvider
     config.providers.configmaps.class: io.strimzi.kafka.KubernetesConfigMapConfigProvider
   build:
-    output:
-      type: docker
-      image: registry.server.svc.cluster.local:30000/kafka-connect:latest
     plugins:
     - name: debezium-debezium-connector-sqlserver
       artifacts:
