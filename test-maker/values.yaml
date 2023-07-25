@@ -4,11 +4,11 @@ project:
 services:
   testService:
     label: test-service
-    tag: "932376771"
+    tag: "943845953"
   eventService:
     label: event-service
     tag: "932376997"
 clients:
   dataTransfer:
     label: data-transfer
-    tag: "932294517"
+    tag: "942393366"
