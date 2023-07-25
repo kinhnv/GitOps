@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.services.testService.label }}"
-        image: "{{ .Values.registry }}/test-maker/{{ .Values.services.testService.label }}:{{ .Values.services.testService.tag }}"
+        image: "{{ .Values.registry }}/{{ .Values.services.testService.label }}:{{ .Values.services.testService.tag }}"
         ports:
         - containerPort: 80
         envFrom:
@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.services.eventService.label }}"
-        image: "{{ .Values.registry }}/test-maker/{{ .Values.services.eventService.label }}:{{ .Values.services.eventService.tag }}"
+        image: "{{ .Values.registry }}/{{ .Values.services.eventService.label }}:{{ .Values.services.eventService.tag }}"
         ports:
         - containerPort: 80
         envFrom:
@@ -64,6 +64,6 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.clients.dataTransfer.label }}"
-        image: "{{ .Values.registry }}/test-maker/{{ .Values.clients.dataTransfer.label }}:{{ .Values.clients.dataTransfer.tag }}"
+        image: "{{ .Values.registry }}/{{ .Values.clients.dataTransfer.label }}:{{ .Values.clients.dataTransfer.tag }}"
         ports:
         - containerPort: 80
