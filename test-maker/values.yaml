@@ -1,4 +1,4 @@
-registry: registry.gitlab.com/i3rothers/test-maker/
+registry: registry.gitlab.com/i3rothers/test-maker
 project:
   label: test-maker
 services:
