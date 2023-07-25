@@ -1,14 +1,14 @@
-registry: registry.server.svc.cluster.local:30000
+registry: registry.gitlab.com
 project:
   label: test-maker
 services:
   testService:
-    label: test-service
+    label: i3rothers/test-maker/test-service
     tag: "943845953"
   eventService:
-    label: event-service
+    label: i3rothers/test-maker/event-Service
     tag: "932376997"
 clients:
   dataTransfer:
-    label: data-transfer
+    label: i3rothers/test-maker/data-transfer
     tag: "942393366"
