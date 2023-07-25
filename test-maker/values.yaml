@@ -4,11 +4,11 @@ project:
 services:
   testService:
     label: i3rothers/test-maker/test-service
-    tag: "943845953"
+    tag: "945110064"
   eventService:
-    label: i3rothers/test-maker/event-Service
-    tag: "932376997"
+    label: i3rothers/test-maker/event-service
+    tag: "945135656"
 clients:
   dataTransfer:
     label: i3rothers/test-maker/data-transfer
-    tag: "942393366"
+    tag: "945142108"
