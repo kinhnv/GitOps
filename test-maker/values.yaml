@@ -1,14 +1,14 @@
-registry: registry.gitlab.com
+registry: registry.gitlab.com/i3rothers/test-maker/
 project:
   label: test-maker
 services:
   testService:
-    label: i3rothers/test-maker/test-service
+    label: test-service
     tag: "945110064"
   eventService:
-    label: i3rothers/test-maker/event-service
+    label: event-service
     tag: "945135656"
 clients:
   dataTransfer:
-    label: i3rothers/test-maker/data-transfer
+    label: data-transfer
     tag: "945142108"
