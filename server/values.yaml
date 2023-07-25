@@ -52,46 +52,6 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
-# - name: registry
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: registry
-#     image: registry
-#     tag: 2
-#     ports:
-#     - port: 5000
-#       interalPort: 30000
-#       exteralPort: 30000
-# - name: vault
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: vault
-#     image: vault
-#     tag: 1.9.9
-#     ports:
-#     - port: 8200
-#     securityContext:
-#       capabilities:
-#         add:
-#         - IPC_LOCK
-#       runAsRoot: true
-#     args:
-#     - "server"
-#     volumes:
-#     - path: /vault/config/vault-config.json
-#       configMap: vault
-#       subPath: vault-config.json
-#     - path: /var/opt/vault/data
-#       nfs:
-#         path: "/data/vault"
-#         server: "192.168.1.7"
-#         storage: 10Gi
-# - name: openvpn3
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: openvpn3
-#     image: ubuntu
-#     tag: "latest"
 endPoints:
 - name: docker
   ip: 192.168.1.7
