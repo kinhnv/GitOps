@@ -43,8 +43,8 @@ servers:
   revisionHistoryLimit: 0
   containers:
   - name: gitlab-runner
-    image: kinhnv1801/gitlab-runner
-    tag: "1.0.4"
+    image: registry.gitlab.com/i3rothers/platform/gitlab-runner
+    tag: "1.0.9"
     env:
     - name: DOCKER_HOST
       value: tcp://docker:2375
