@@ -11,3 +11,6 @@ servers:
   fileServer:
     label: i3rothers/common/file-server
     tag: "937662871"
+services:
+  identityServer:
+    tag: "947657545"
