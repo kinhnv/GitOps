@@ -4,7 +4,7 @@ project:
 servers:
   apiGateway:
     label: api-gateway
-    tag: "932305901"
+    tag: "947638426"
   identityServer:
     label: identity-server
     tag: "932290389"
