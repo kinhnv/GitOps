@@ -1,13 +1,13 @@
-registry: registry.server.svc.cluster.local:30000
+registry: registry.gitlab.com
 project:
   label: common
 servers:
   apiGateway:
-    label: api-gateway
+    label: i3rothers/common/api-gateway
     tag: "932305901"
   identityServer:
-    label: identity-server
+    label: i3rothers/common/identity-server
     tag: "932290389"
   fileServer:
-    label: file-server
+    label: i3rothers/common/file-server
     tag: "937662871"
