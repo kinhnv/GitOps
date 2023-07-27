@@ -29,6 +29,7 @@ spec:
     output:
       type: docker
       image: registry.gitlab.com/i3rothers/platform/gitops/kafka-connect:latest
+      pushSecret: regcred-secret
     plugins:
     - name: debezium-debezium-connector-sqlserver
       artifacts:
