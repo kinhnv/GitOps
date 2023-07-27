@@ -4,7 +4,7 @@ project:
 servers:
   apiGateway:
     label: i3rothers/common/api-gateway
-    tag: "932305901"
+    tag: "947638426"
   identityServer:
     label: i3rothers/common/identity-server
     tag: "932290389"
