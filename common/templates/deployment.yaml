@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.servers.apiGateway.label }}"
-        image: "{{ .Values.registry }}/common.{{ .Values.servers.apiGateway.label }}:{{ .Values.servers.apiGateway.tag }}"
+        image: "{{ .Values.registry }}/{{ .Values.servers.apiGateway.label }}:{{ .Values.servers.apiGateway.tag }}"
         ports:
         - containerPort: 80
 ---
@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.servers.identityServer.label }}"
-        image: "{{ .Values.registry }}/common.{{ .Values.servers.identityServer.label }}:{{ .Values.servers.identityServer.tag }}"
+        image: "{{ .Values.registry }}/{{ .Values.servers.identityServer.label }}:{{ .Values.servers.identityServer.tag }}"
         ports:
         - containerPort: 80
         envFrom:
@@ -59,7 +59,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.servers.fileServer.label }}"
-        image: "{{ .Values.registry }}/common.{{ .Values.servers.fileServer.label }}:{{ .Values.servers.fileServer.tag }}"
+        image: "{{ .Values.registry }}/{{ .Values.servers.fileServer.label }}:{{ .Values.servers.fileServer.tag }}"
         ports:
         - containerPort: 80
         envFrom:
