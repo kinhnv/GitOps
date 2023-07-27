@@ -44,7 +44,7 @@ servers:
   containers:
   - name: gitlab-runner
     image: registry.gitlab.com/i3rothers/platform/gitlab-runner
-    tag: "1.1.0"
+    tag: "1.1.1"
     env:
     - name: DOCKER_HOST
       value: tcp://docker:2375
