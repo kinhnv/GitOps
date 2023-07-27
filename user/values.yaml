@@ -1,5 +1,5 @@
-registry: registry.gitlab.com
+registry: registry.gitlab.com/i3rothers/user/
 services:
   userService:
-    label: i3rothers/user/user-service
+    label: user-service
     tag: "932375233"
