@@ -1,7 +1,5 @@
-registry: registry.server.svc.cluster.local:30000
+registry: registry.gitlab.com
 services:
   userService:
-    label: user-service
+    label: i3rothers/user/user-service
     tag: "932375233"
-  eventService:
-    tag: "932304475"
