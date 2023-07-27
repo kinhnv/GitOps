@@ -19,6 +19,6 @@ spec:
         - containerPort: 80
         envFrom:
           - secretRef:
-              name: user-userservice-secret
+              name: user-service-secret
           - secretRef:
-              name: user-common-secret
+              name: common-secret
