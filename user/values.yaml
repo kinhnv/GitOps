@@ -2,4 +2,4 @@ registry: registry.gitlab.com/i3rothers/user
 services:
   userService:
     label: user-service
-    tag: "932375233"
+    tag: "947696312"
