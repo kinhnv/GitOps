@@ -19,7 +19,7 @@ spec:
         - containerPort: 80
         envFrom:
           - secretRef:
-              name: testservice-secret
+              name: test-service-secret
           - secretRef:
               name: common-secret
 ---
