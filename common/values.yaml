@@ -1,15 +1,15 @@
-registry: registry.gitlab.com
+registry: registry.gitlab.com/i3rothers/common
 project:
   label: common
 servers:
   apiGateway:
-    label: i3rothers/common/api-gateway
+    label: api-gateway
     tag: "947638426"
   identityServer:
-    label: i3rothers/common/identity-server
+    label: identity-server
     tag: "932290389"
   fileServer:
-    label: i3rothers/common/file-server
+    label: file-server
     tag: "937662871"
 services:
   identityServer:
