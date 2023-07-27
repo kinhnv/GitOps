@@ -19,9 +19,9 @@ spec:
         - containerPort: 80
         envFrom:
           - secretRef:
-              name: testmaker-testservice-secret
+              name: testservice-secret
           - secretRef:
-              name: testmaker-common-secret
+              name: common-secret
 ---
 apiVersion: apps/v1
 kind: Deployment
