@@ -4,7 +4,7 @@ project:
 services:
   testService:
     label: test-service
-    tag: "949971472"
+    tag: "950064927"
   eventService:
     label: event-service
     tag: "945414929"
