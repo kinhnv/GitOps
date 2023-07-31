@@ -7,7 +7,7 @@ services:
     tag: "950132754"
   eventService:
     label: event-service
-    tag: "950517923"
+    tag: "951186925"
 clients:
   dataTransfer:
     label: data-transfer
