@@ -68,6 +68,7 @@ data:
         disable_cache = false
         volumes = ["/cache"]
         shm_size = 0
+        
     [[runners]]
       name = "kinhnv-shell"
       url = "https://gitlab.com"
@@ -88,7 +89,7 @@ data:
       [runners.cache]
         MaxUploadedArchiveSize = 0
       [runners.docker]
-        host = "tcp://localhost:2375"
+        host = "tcp://docker:2375"
         tls_verify = false
         image = "ubuntu"
         privileged = false
