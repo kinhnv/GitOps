@@ -68,22 +68,13 @@ data:
         disable_cache = false
         volumes = ["/cache"]
         shm_size = 0
-        
-    [[runners]]
-      name = "kinhnv-shell"
-      url = "https://gitlab.com"
-      id = 27322370
-      token = "glrt-X15sc5Cdu2aJysP8mKqz"
-      token_obtained_at = 2023-08-29T16:15:06Z
-      token_expires_at = 0001-01-01T00:00:00Z
-      executor = "shell"
 
     [[runners]]
       name = "kinhnv-docker"
-      url = "https://gitlab.com"
-      id = 27322370
-      token = "glrt-X15sc5Cdu2aJysP8mKqz"
-      token_obtained_at = 2023-08-29T16:15:45Z
+      url = "https://gitlab.com/"
+      id = 27322930
+      token = "CG8rdSmBgZDG8xkfKBy9"
+      token_obtained_at = 2023-08-29T16:35:15Z
       token_expires_at = 0001-01-01T00:00:00Z
       executor = "docker"
       [runners.cache]
