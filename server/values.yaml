@@ -55,6 +55,39 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
+- name: mysql
+  revisionHistoryLimit: 0
+  containers:
+  - name: mysql
+    image: mysql
+    tag: "8.0.35-debian"
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      secret: mysql-secret
+      key: MYSQL_ROOT_PASSWORD
+    ports:
+    - port: 3306
+      exteralPort: 30003
+    # volumes:
+    # - path: /etc/gitlab-runner/config.toml
+    #   configMap: gitlab-runnner
+    #   subPath: config.toml
+- name: phpmyadmin
+  revisionHistoryLimit: 0
+  containers:
+  - name: phpmyadmin
+    image: phpmyadmin
+    tag: "5.2.1-apache"
+    env:
+    - name: PMA_HOST
+      value: "mysql.server.svc.cluster.local"
+    - name: PMA_PORT
+      value: "3306"
+    - name: PMA_ARBITRARY
+      value: "1"
+    ports:
+    - port: 80
+      exteralPort: 30004
 endPoints:
 - name: docker
   ip: 192.168.1.7
