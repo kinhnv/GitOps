@@ -1,44 +1,44 @@
 servers:
-- name: mssql
-  revisionHistoryLimit: 0
-  containers:
-  - name: mssql
-    image: mcr.microsoft.com/mssql/server
-    tag: 2022-latest
-    securityContext:
-      runAsRoot: true
-    env:
-    - name: ACCEPT_EULA
-      value: "Y"
-    - name: SA_PASSWORD
-      secret: mssql-secret
-      key: MSSQL_INITDB_SA_PASSWORD
-      optional: false
-    - name: MSSQL_AGENT_ENABLED
-      value: true
-    ports:
-    - port: 1433
-      exteralPort: 30001
-    volumes:
-    - path: /var/opt/mssql/data
-      nfs:
-        path: "/data/mssql"
-        server: "192.168.1.7"
-        storage: 50Gi
-- name: mongodb
-  revisionHistoryLimit: 0
-  containers:
-  - name: mongodb
-    image: mongo
-    tag: 6.0.1
-    securityContext:
-      runAsRoot: true
-    ports:
-    - port: 27017
-      exteralPort: 30002
-    envFrom:
-    - secretRef:
-        name: mongodb-secret
+# - name: mssql
+#   revisionHistoryLimit: 0
+#   containers:
+#   - name: mssql
+#     image: mcr.microsoft.com/mssql/server
+#     tag: 2022-latest
+#     securityContext:
+#       runAsRoot: true
+#     env:
+#     - name: ACCEPT_EULA
+#       value: "Y"
+#     - name: SA_PASSWORD
+#       secret: mssql-secret
+#       key: MSSQL_INITDB_SA_PASSWORD
+#       optional: false
+#     - name: MSSQL_AGENT_ENABLED
+#       value: true
+#     ports:
+#     - port: 1433
+#       exteralPort: 30001
+#     volumes:
+#     - path: /var/opt/mssql/data
+#       nfs:
+#         path: "/data/mssql"
+#         server: "192.168.1.7"
+#         storage: 50Gi
+# - name: mongodb
+#   revisionHistoryLimit: 0
+#   containers:
+#   - name: mongodb
+#     image: mongo
+#     tag: 6.0.1
+#     securityContext:
+#       runAsRoot: true
+#     ports:
+#     - port: 27017
+#       exteralPort: 30002
+#     envFrom:
+#     - secretRef:
+#         name: mongodb-secret
 - name: gitlab-runner
   revisionHistoryLimit: 0
   containers:
