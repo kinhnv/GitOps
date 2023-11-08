@@ -68,10 +68,12 @@ servers:
     ports:
     - port: 3306
       exteralPort: 30003
-    # volumes:
-    # - path: /etc/gitlab-runner/config.toml
-    #   configMap: gitlab-runnner
-    #   subPath: config.toml
+    volumes:
+    - path: /var/lib/mysql
+      nfs:
+        path: "/data/mysql"
+        server: "192.168.1.7"
+        storage: 50Gi
 - name: phpmyadmin
   revisionHistoryLimit: 0
   containers:
