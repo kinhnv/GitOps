@@ -55,25 +55,25 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
-# - name: mysql
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: mysql
-#     image: mysql
-#     tag: "8.0.35-debian"
-#     env:
-#     - name: MYSQL_ROOT_PASSWORD
-#       secret: mysql-secret
-#       key: MYSQL_ROOT_PASSWORD
-#     ports:
-#     - port: 3306
-#       exteralPort: 30003
-#     volumes:
-#     - path: /var/lib/mysql
-#       nfs:
-#         path: "/data/mysql"
-#         server: "192.168.1.7"
-#         storage: 50Gi
+- name: mysql
+  revisionHistoryLimit: 0
+  containers:
+  - name: mysql
+    image: mysql
+    tag: "8.0.35-debian"
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      secret: mysql-secret
+      key: MYSQL_ROOT_PASSWORD
+    ports:
+    - port: 3306
+      exteralPort: 30003
+    volumes:
+    - path: /var/lib/mysql
+      nfs:
+        path: "/data/mysql"
+        server: "192.168.1.7"
+        storage: 50Gi
 - name: phpmyadmin
   revisionHistoryLimit: 0
   containers:
