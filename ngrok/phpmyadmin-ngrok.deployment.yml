@@ -16,7 +16,7 @@ spec:
         image: ngrok/ngrok:alpine
         env:
           - name: TYPE
-            value: tcp
+            value: http
           - name: HOST
             value: "phpmyadmin.server.svc.cluster.local"
           - name: PORT
