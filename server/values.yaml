@@ -1,44 +1,44 @@
 servers:
-# - name: mssql
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: mssql
-#     image: mcr.microsoft.com/mssql/server
-#     tag: 2022-latest
-#     securityContext:
-#       runAsRoot: true
-#     env:
-#     - name: ACCEPT_EULA
-#       value: "Y"
-#     - name: SA_PASSWORD
-#       secret: mssql-secret
-#       key: MSSQL_INITDB_SA_PASSWORD
-#       optional: false
-#     - name: MSSQL_AGENT_ENABLED
-#       value: true
-#     ports:
-#     - port: 1433
-#       exteralPort: 30001
-#     volumes:
-#     - path: /var/opt/mssql/data
-#       nfs:
-#         path: "/data/mssql"
-#         server: "192.168.1.7"
-#         storage: 50Gi
-# - name: mongodb
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: mongodb
-#     image: mongo
-#     tag: 6.0.1
-#     securityContext:
-#       runAsRoot: true
-#     ports:
-#     - port: 27017
-#       exteralPort: 30002
-#     envFrom:
-#     - secretRef:
-#         name: mongodb-secret
+- name: mssql
+  revisionHistoryLimit: 0
+  containers:
+  - name: mssql
+    image: mcr.microsoft.com/mssql/server
+    tag: 2022-latest
+    securityContext:
+      runAsRoot: true
+    env:
+    - name: ACCEPT_EULA
+      value: "Y"
+    - name: SA_PASSWORD
+      secret: mssql-secret
+      key: MSSQL_INITDB_SA_PASSWORD
+      optional: false
+    - name: MSSQL_AGENT_ENABLED
+      value: true
+    ports:
+    - port: 1433
+      exteralPort: 30001
+    volumes:
+    - path: /var/opt/mssql/data
+      nfs:
+        path: "/data/mssql"
+        server: "192.168.1.7"
+        storage: 50Gi
+- name: mongodb
+  revisionHistoryLimit: 0
+  containers:
+  - name: mongodb
+    image: mongo
+    tag: 6.0.1
+    securityContext:
+      runAsRoot: true
+    ports:
+    - port: 27017
+      exteralPort: 30002
+    envFrom:
+    - secretRef:
+        name: mongodb-secret
 - name: gitlab-runner
   revisionHistoryLimit: 0
   containers:
@@ -55,41 +55,6 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
-- name: mysql
-  revisionHistoryLimit: 0
-  containers:
-  - name: mysql
-    image: mysql
-    tag: "8.0.35-debian"
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      secret: mysql-secret
-      key: MYSQL_ROOT_PASSWORD
-    ports:
-    - port: 3306
-      exteralPort: 30003
-    volumes:
-    - path: /var/lib/mysql
-      nfs:
-        path: "/data/mysql"
-        server: "192.168.1.7"
-        storage: 50Gi
-- name: phpmyadmin
-  revisionHistoryLimit: 0
-  containers:
-  - name: phpmyadmin
-    image: phpmyadmin
-    tag: "5.2.1-apache"
-    env:
-    - name: PMA_HOST
-      value: "mysql.server.svc.cluster.local"
-    - name: PMA_PORT
-      value: "3306"
-    - name: PMA_ARBITRARY
-      value: "1"
-    ports:
-    - port: 80
-      exteralPort: 30004
 endPoints:
 - name: docker
   ip: 192.168.1.7
