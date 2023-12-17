@@ -19,12 +19,12 @@ servers:
     ports:
     - port: 1433
       exteralPort: 30001
-    # volumes:
-    # - path: /var/opt/mssql/data
-    #   nfs:
-    #     path: "/data/mssql"
-    #     server: "192.168.1.3"
-    #     storage: 50Gi
+    volumes:
+    - path: /var/opt/mssql/data
+      nfs:
+        path: "/data/mssql"
+        server: "192.168.1.3"
+        storage: 50Gi
 - name: mongodb
   revisionHistoryLimit: 0
   containers:
