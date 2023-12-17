@@ -23,7 +23,7 @@ servers:
     - path: /var/opt/mssql/data
       nfs:
         path: "/data/mssql"
-        server: "192.168.1.7"
+        server: "192.168.1.3"
         storage: 50Gi
 - name: mongodb
   revisionHistoryLimit: 0
@@ -57,13 +57,13 @@ servers:
       subPath: config.toml
 endPoints:
 - name: docker
-  ip: 192.168.1.7
+  ip: 192.168.1.3
   ports:
   - name: docker
     port: 2375
     protocol: TCP
 - name: ssh
-  ip: 192.168.1.7
+  ip: 192.168.1.3
   ports:
   - name: ssh
     port: 22
