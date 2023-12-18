@@ -10,12 +10,12 @@ servers:
       value: "2181"
     ports:
     - port: 2181
-    # volumes:
-    # - path: /var/lib/zookeeper
-    #   nfs:
-    #     path: "/data/cp-zookeeper"
-    #     server: "192.168.1.3"
-    #     storage: 20Gi
+    volumes:
+    - path: /var/lib/zookeeper
+      nfs:
+        path: "/data/cp-zookeeper"
+        server: "192.168.1.3"
+        storage: 20Gi
 - name: cp-kafka
   revisionHistoryLimit: 0
   containers:
@@ -41,12 +41,12 @@ servers:
     - port: 9092
     - port: 9093
       exteralPort: 31000
-    # volumes:
-    # - path: /var/lib/kafka
-    #   nfs:
-    #     path: "/data/cp-kafka"
-    #     server: "192.168.1.3"
-    #     storage: 50Gi
+    volumes:
+    - path: /var/lib/kafka
+      nfs:
+        path: "/data/cp-kafka"
+        server: "192.168.1.3"
+        storage: 50Gi
 - name: cp-schema-registry
   revisionHistoryLimit: 0
   containers:
