@@ -11,3 +11,7 @@ servers:
   fileServer:
     label: file-server
     tag: "947720442"
+clients:
+  dataTransfer:
+    label: data-transfer
+    tag: "1113502346"

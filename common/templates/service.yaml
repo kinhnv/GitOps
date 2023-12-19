@@ -50,3 +50,14 @@ metadata:
 spec:
   type: ExternalName
   externalName: mssql.server.svc.cluster.local
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Values.clients.dataTransfer.label }}"
+spec:
+  selector:
+    app: "{{ .Values.clients.dataTransfer.label }}"
+  ports:
+  - port: 80
+    targetPort: 80
