@@ -47,50 +47,50 @@ servers:
 #         path: "/data/cp-kafka"
 #         server: "192.168.1.3"
 #         storage: 50Gi
-- name: cp-schema-registry
-  revisionHistoryLimit: 0
-  containers:
-  - name: cp-schema-registry
-    image: confluentinc/cp-schema-registry
-    tag: "6.1.9"
-    env:
-    - name: SCHEMA_REGISTRY_HOST_NAME
-      value: "cp-schema-registry"
-    - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
-      value: "PLAINTEXT://cp-kafka.kafka.svc.cluster.local:9092"
-    - name: SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL
-      value: "PLAINTEXT"
-    - name: SCHEMA_REGISTRY_LISTENERS
-      value: http://0.0.0.0:8085
-    - name: SCHEMA_REGISTRY_SCHEMA_REGISTRY_INTER_INSTANCE_PROTOCOL
-      value: "http"
-    - name: SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL
-      value: INFO
-    - name: SCHEMA_REGISTRY_KAFKASTORE_TOPIC
-      value: _schemas
-    ports:
-    - port: 8085
-      exteralPort: 31001
-- name: kafka-ui
-  revisionHistoryLimit: 0
-  containers:
-  - name: kafka-ui
-    image: provectuslabs/kafka-ui
-    tag: "latest"
-    env:
-    - name: KAFKA_CLUSTERS_0_NAME
-      value: "local"
-    - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-      value: "cp-kafka.kafka.svc.cluster.local:9092"
-    - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
-      value: "http://cp-schema-registry:8085"
-    - name: AUTH_TYPE
-      value: "LOGIN_FORM"
-    - name: SPRING_SECURITY_USER_NAME
-      value: admin
-    - name: SPRING_SECURITY_USER_PASSWORD
-      secret: kafka-ui-secret
-      key: ADMIN_PASSWORD
-      optional: false
-    ports:
-    - port: 8080
+# - name: cp-schema-registry
+#   revisionHistoryLimit: 0
+#   containers:
+#   - name: cp-schema-registry
+#     image: confluentinc/cp-schema-registry
+#     tag: "6.1.9"
+#     env:
+#     - name: SCHEMA_REGISTRY_HOST_NAME
+#       value: "cp-schema-registry"
+#     - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
+#       value: "PLAINTEXT://cp-kafka.kafka.svc.cluster.local:9092"
+#     - name: SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL
+#       value: "PLAINTEXT"
+#     - name: SCHEMA_REGISTRY_LISTENERS
+#       value: http://0.0.0.0:8085
+#     - name: SCHEMA_REGISTRY_SCHEMA_REGISTRY_INTER_INSTANCE_PROTOCOL
+#       value: "http"
+#     - name: SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL
+#       value: INFO
+#     - name: SCHEMA_REGISTRY_KAFKASTORE_TOPIC
+#       value: _schemas
+#     ports:
+#     - port: 8085
+#       exteralPort: 31001
+# - name: kafka-ui
+#   revisionHistoryLimit: 0
+#   containers:
+#   - name: kafka-ui
+#     image: provectuslabs/kafka-ui
+#     tag: "latest"
+#     env:
+#     - name: KAFKA_CLUSTERS_0_NAME
+#       value: "local"
+#     - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
+#       value: "cp-kafka.kafka.svc.cluster.local:9092"
+#     - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
+#       value: "http://cp-schema-registry:8085"
+#     - name: AUTH_TYPE
+#       value: "LOGIN_FORM"
+#     - name: SPRING_SECURITY_USER_NAME
+#       value: admin
+#     - name: SPRING_SECURITY_USER_PASSWORD
+#       secret: kafka-ui-secret
+#       key: ADMIN_PASSWORD
+#       optional: false
+#     ports:
+#     - port: 8080
