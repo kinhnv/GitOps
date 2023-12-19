@@ -16,37 +16,37 @@ servers:
         path: "/data/cp-zookeeper"
         server: "192.168.1.3"
         storage: 20Gi
-# - name: cp-kafka
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: cp-kafka
-#     image: confluentinc/cp-kafka
-#     tag: "6.1.9"
-#     env:
-#     - name: KAFKA_ZOOKEEPER_CONNECT
-#       value: "cp-zookeeper:2181"
-#     - name: KAFKA_LISTENERS
-#       value: INTERNAL://:9092,HOST://:9093
-#     - name: KAFKA_ADVERTISED_LISTENERS
-#       value: INTERNAL://cp-kafka.kafka.svc.cluster.local:9092,HOST://192.168.1.3:31000
-#     - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
-#       value: INTERNAL:PLAINTEXT,HOST:PLAINTEXT
-#     - name: KAFKA_INTER_BROKER_LISTENER_NAME
-#       value: INTERNAL
-#     - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
-#       value: 1
-#     - name: KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL
-#       value: http://cp-schema-registry:8085
-#     ports:
-#     - port: 9092
-#     - port: 9093
-#       exteralPort: 31000
-#     volumes:
-#     - path: /var/lib/kafka
-#       nfs:
-#         path: "/data/cp-kafka"
-#         server: "192.168.1.3"
-#         storage: 50Gi
+- name: cp-kafka
+  revisionHistoryLimit: 0
+  containers:
+  - name: cp-kafka
+    image: confluentinc/cp-kafka
+    tag: "6.1.9"
+    env:
+    - name: KAFKA_ZOOKEEPER_CONNECT
+      value: "cp-zookeeper:2181"
+    - name: KAFKA_LISTENERS
+      value: INTERNAL://:9092,HOST://:9093
+    - name: KAFKA_ADVERTISED_LISTENERS
+      value: INTERNAL://cp-kafka.kafka.svc.cluster.local:9092,HOST://192.168.1.3:31000
+    - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+      value: INTERNAL:PLAINTEXT,HOST:PLAINTEXT
+    - name: KAFKA_INTER_BROKER_LISTENER_NAME
+      value: INTERNAL
+    - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+      value: 1
+    - name: KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL
+      value: http://cp-schema-registry:8085
+    ports:
+    - port: 9092
+    - port: 9093
+      exteralPort: 31000
+    volumes:
+    - path: /var/lib/kafka
+      nfs:
+        path: "/data/cp-kafka"
+        server: "192.168.1.3"
+        storage: 50Gi
 - name: cp-schema-registry
   revisionHistoryLimit: 0
   containers:
@@ -71,26 +71,26 @@ servers:
     ports:
     - port: 8085
       exteralPort: 31001
-# - name: kafka-ui
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: kafka-ui
-#     image: provectuslabs/kafka-ui
-#     tag: "latest"
-#     env:
-#     - name: KAFKA_CLUSTERS_0_NAME
-#       value: "local"
-#     - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-#       value: "cp-kafka.kafka.svc.cluster.local:9092"
-#     - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
-#       value: "http://cp-schema-registry:8085"
-#     - name: AUTH_TYPE
-#       value: "LOGIN_FORM"
-#     - name: SPRING_SECURITY_USER_NAME
-#       value: admin
-#     - name: SPRING_SECURITY_USER_PASSWORD
-#       secret: kafka-ui-secret
-#       key: ADMIN_PASSWORD
-#       optional: false
-#     ports:
-#     - port: 8080
+- name: kafka-ui
+  revisionHistoryLimit: 0
+  containers:
+  - name: kafka-ui
+    image: provectuslabs/kafka-ui
+    tag: "latest"
+    env:
+    - name: KAFKA_CLUSTERS_0_NAME
+      value: "local"
+    - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
+      value: "cp-kafka.kafka.svc.cluster.local:9092"
+    - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
+      value: "http://cp-schema-registry:8085"
+    - name: AUTH_TYPE
+      value: "LOGIN_FORM"
+    - name: SPRING_SECURITY_USER_NAME
+      value: admin
+    - name: SPRING_SECURITY_USER_PASSWORD
+      secret: kafka-ui-secret
+      key: ADMIN_PASSWORD
+      optional: false
+    ports:
+    - port: 8080
