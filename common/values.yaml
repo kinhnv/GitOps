@@ -7,7 +7,7 @@ servers:
     tag: "947638426"
   identityServer:
     label: identity-server
-    tag: "947717798"
+    tag: "1114775187"
   fileServer:
     label: file-server
     tag: "947720442"
