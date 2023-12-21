@@ -71,26 +71,26 @@ servers:
 #     ports:
 #     - port: 8085
 #       exteralPort: 31001
-# - name: kafka-ui
-#   revisionHistoryLimit: 0
-#   containers:
-#   - name: kafka-ui
-#     image: provectuslabs/kafka-ui
-#     tag: "latest"
-#     env:
-#     - name: KAFKA_CLUSTERS_0_NAME
-#       value: "local"
-#     - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-#       value: "cp-kafka.kafka.svc.cluster.local:9092"
-#     - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
-#       value: "http://cp-schema-registry:8085"
-#     - name: AUTH_TYPE
-#       value: "LOGIN_FORM"
-#     - name: SPRING_SECURITY_USER_NAME
-#       value: admin
-#     - name: SPRING_SECURITY_USER_PASSWORD
-#       secret: kafka-ui-secret
-#       key: ADMIN_PASSWORD
-#       optional: false
-#     ports:
-#     - port: 8080
+- name: kafka-ui
+  revisionHistoryLimit: 0
+  containers:
+  - name: kafka-ui
+    image: provectuslabs/kafka-ui
+    tag: "latest"
+    env:
+    - name: KAFKA_CLUSTERS_0_NAME
+      value: "local"
+    - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
+      value: "cp-kafka.kafka.svc.cluster.local:9092"
+    - name: KAFKA_CLUSTERS_0_SCHEMAREGISTRY
+      value: "http://cp-schema-registry:8085"
+    - name: AUTH_TYPE
+      value: "LOGIN_FORM"
+    - name: SPRING_SECURITY_USER_NAME
+      value: admin
+    - name: SPRING_SECURITY_USER_PASSWORD
+      secret: kafka-ui-secret
+      key: ADMIN_PASSWORD
+      optional: false
+    ports:
+    - port: 8080
