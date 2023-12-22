@@ -26,6 +26,8 @@ spec:
             value: "2AcXLYoUwj7zsEhnAsB859vDL3W_5XUvNgYTuCRCdQm5gaWNC"
           - name: GITHUB_FILE
             value: "api-gateway.json"
+          - name: GITHUB_NGROK_SOURCE
+            value: "git@github.com:kinhnv/Platform.Ngrok.git"
         envFrom:
           - secretRef:
               name: common-secret
