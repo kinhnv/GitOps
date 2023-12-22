@@ -28,9 +28,11 @@ spec:
             value: "api-gateway.json"
           - name: GITHUB_NGROK_SOURCE
             value: "git@github.com:kinhnv/Platform.Ngrok.git"
-        envFrom:
-          - secretRef:
-              name: common-secret
+          - name: SSH_PRIVATE_KEY
+            valueFrom:
+              secretKeyRef:
+                name: common-secret
+                key: SSH_PRIVATE_KEY
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
