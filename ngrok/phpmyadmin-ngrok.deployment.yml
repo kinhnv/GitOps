@@ -1,53 +1,53 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: phpmyadmin-ngrok
-spec:
-  selector:
-    matchLabels:
-      app: phpmyadmin-ngrok
-  template:
-    metadata:
-      labels:
-        app: phpmyadmin-ngrok
-    spec:
-      containers:
-      - name: phpmyadmin-ngrok
-        image: ngrok/ngrok:alpine
-        env:
-          - name: TYPE
-            value: http
-          - name: HOST
-            value: "phpmyadmin.server.svc.cluster.local"
-          - name: PORT
-            value: "80"
-          - name: NGROK_AUTHTOKEN
-            value: "2Xup9QWtJptv2CxkuxW2bbT0aq8_5fJKhn1khxv9cGxUhkNJF"
-          - name: GITHUB_FILE
-            value: "phpmyadmin.json"
-        envFrom:
-          - secretRef:
-              name: common-secret
-        securityContext:
-          allowPrivilegeEscalation: false
-          runAsUser: 0
-        command: ["/bin/sh"]
-        args: ["-c", "/custom-entrypoint.sh"]
-        volumeMounts:
-        - name: custom-entrypoint
-          mountPath: /custom-entrypoint.sh
-          subPath: custom-entrypoint.sh
-        - name: push-ngrok-endpoint
-          mountPath: /push-ngrok-endpoint.sh
-          subPath: push-ngrok-endpoint.sh
-      volumes:
-      - configMap:
-          defaultMode: 511
-          name: custom-entrypoint
-        name: custom-entrypoint
-      - configMap:
-          defaultMode: 511
-          name: push-ngrok-endpoint
-        name: push-ngrok-endpoint
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: phpmyadmin-ngrok
+# spec:
+#   selector:
+#     matchLabels:
+#       app: phpmyadmin-ngrok
+#   template:
+#     metadata:
+#       labels:
+#         app: phpmyadmin-ngrok
+#     spec:
+#       containers:
+#       - name: phpmyadmin-ngrok
+#         image: ngrok/ngrok:alpine
+#         env:
+#           - name: TYPE
+#             value: http
+#           - name: HOST
+#             value: "phpmyadmin.server.svc.cluster.local"
+#           - name: PORT
+#             value: "80"
+#           - name: NGROK_AUTHTOKEN
+#             value: "2Xup9QWtJptv2CxkuxW2bbT0aq8_5fJKhn1khxv9cGxUhkNJF"
+#           - name: GITHUB_FILE
+#             value: "phpmyadmin.json"
+#         envFrom:
+#           - secretRef:
+#               name: common-secret
+#         securityContext:
+#           allowPrivilegeEscalation: false
+#           runAsUser: 0
+#         command: ["/bin/sh"]
+#         args: ["-c", "/custom-entrypoint.sh"]
+#         volumeMounts:
+#         - name: custom-entrypoint
+#           mountPath: /custom-entrypoint.sh
+#           subPath: custom-entrypoint.sh
+#         - name: push-ngrok-endpoint
+#           mountPath: /push-ngrok-endpoint.sh
+#           subPath: push-ngrok-endpoint.sh
+#       volumes:
+#       - configMap:
+#           defaultMode: 511
+#           name: custom-entrypoint
+#         name: custom-entrypoint
+#       - configMap:
+#           defaultMode: 511
+#           name: push-ngrok-endpoint
+#         name: push-ngrok-endpoint
 
 
