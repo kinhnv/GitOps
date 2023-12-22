@@ -58,6 +58,7 @@ data:
     then
         folder=$(ls | grep Platform.Ngrok)
     fi
+    echo \$folder is $folder
     httpsVar=$(grep -Eo 'https://[^ >]+' ngrok-output.txt|tail -1)
     if [ -z "$httpsVar" ]
     then
