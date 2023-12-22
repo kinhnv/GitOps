@@ -52,28 +52,21 @@ data:
     chmod 644 /root/.ssh/known_hosts
     git config --global user.email "kinhnv1801@gmail.com"
     git config --global user.name "Nguyen Van Kinh"
-    git clone $GITHUB_NGROK_SOURCE
-    rm -rf ngrok-output.txt | true
-    folder=$(ls | grep ngrok)
-    if [ -z "$folder" ]
-    then
-        folder=$(ls | grep Platform.Ngrok)
-    fi
-    echo \$folder is $folder
+    git clone $GITHUB_NGROK_SOURCE ngrok
     httpsVar=$(grep -Eo 'https://[^ >]+' ngrok-output.txt|tail -1)
     if [ -z "$httpsVar" ]
     then
         echo "\$httpsVar is empty"
     else
-        printf '{ "https": "%s" }\n' $httpsVar > $folder/$GITHUB_FILE
+        printf '{ "https": "%s" }\n' $httpsVar > ngrok/$GITHUB_FILE
     fi
     tcpVar=$(grep -Eo 'tcp://[^ >]+' ngrok-output.txt|head -1)
     if [ -z "$tcpVar" ]
     then
         echo "\$tcpVar is empty"
     else
-        printf '{ "tcp": "%s" }\n' $tcpVar > $folder/$GITHUB_FILE
+        printf '{ "tcp": "%s" }\n' $tcpVar > ngrok/$GITHUB_FILE
     fi
-    cd $folder
+    cd ngrok
     git add . && git commit -m "update $GITHUB_FILE"
     git push
