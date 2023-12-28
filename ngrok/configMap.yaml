@@ -73,9 +73,12 @@ data:
     while [ $is_success -eq 0 ]
     do
         git pull
-        git push > test.txt
-        echo "show test.txt"
-        cat test.txt
+        if git push
+        then
+            echo "git push succeeded"
+        else
+            echo "git push failed"
+        fi
         is_success=1
         echo success
     done
