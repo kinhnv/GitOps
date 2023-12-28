@@ -14,6 +14,9 @@ spec:
       containers:
       - name: mongodb-ngrok
         image: ngrok/ngrok:alpine
+        envFrom:
+          - secretRef:
+              name: common-secret
         env:
           - name: TYPE
             value: tcp
@@ -23,9 +26,6 @@ spec:
             value: "27017"
           - name: NGROK_AUTHTOKEN
             value: "2Bn9nDSWbGhjW6VMiP2x0ue5ua0_JWkdWZ4mJARotqUFnExt"
-        envFrom:
-          - secretRef:
-              name: common-secret
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0

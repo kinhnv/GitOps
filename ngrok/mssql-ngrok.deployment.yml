@@ -14,6 +14,9 @@ spec:
       containers:
       - name: mssql-ngrok
         image: ngrok/ngrok:alpine
+        envFrom:
+          - secretRef:
+              name: common-secret
         env:
           - name: TYPE
             value: tcp
@@ -23,9 +26,6 @@ spec:
             value: "1433"
           - name: NGROK_AUTHTOKEN
             value: "29kkeywjkqeYDLdjmBxMq4hyREu_6qB3yXNEqAuBy9iwXaugL"
-        envFrom:
-          - secretRef:
-              name: common-secret
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0

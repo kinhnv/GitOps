@@ -27,8 +27,6 @@ spec:
             value: "8080"
           - name: NGROK_AUTHTOKEN
             value: "2KUjbxalbUU6uHWIzwzdBWzdd6h_7LoDg6oNaikwW78pyufin"
-          - name: GITHUB_NGROK_SOURCE
-            value: "git@gitlab.com:i3rothers/platform/ngrok.git"
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
