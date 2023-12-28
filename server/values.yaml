@@ -45,7 +45,6 @@ servers:
   - name: gitlab-runner
     image: gitlab/gitlab-runner
     tag: latest
-    entrypoint: /custom-entrypoint.sh
     env:
     - name: DOCKER_HOST
       value: tcp://docker:2375
@@ -56,9 +55,9 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
-    - path: /custom-entrypoint.sh
+    - path: /entrypoint
       configMap: gitlab-runnner
-      subPath: custom-entrypoint.sh
+      subPath: entrypoint
 endPoints:
 - name: docker
   ip: 192.168.1.3
