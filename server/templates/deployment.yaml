@@ -101,6 +101,10 @@ spec:
         {{/*
         end set volumes
         */}}
+        {{- if $containerValue.entrypoint }}
+        command: ["/bin/sh"]
+        args: ["-c", $containerValue.entrypoint]
+        {{ end -}}
       {{ end -}}
       {{ $volumesLength := include "server.getVolumes" .containers }}
       {{- if gt (len $volumesLength) 0 -}}
