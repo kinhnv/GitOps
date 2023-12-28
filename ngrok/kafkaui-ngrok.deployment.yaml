@@ -15,6 +15,9 @@ spec:
       containers:
       - name: kafkaui-ngrok
         image: ngrok/ngrok:alpine
+        envFrom:
+          - secretRef:
+              name: common-secret
         env:
           - name: TYPE
             value: http
@@ -24,11 +27,8 @@ spec:
             value: "8080"
           - name: NGROK_AUTHTOKEN
             value: "2KUjbxalbUU6uHWIzwzdBWzdd6h_7LoDg6oNaikwW78pyufin"
-          - name: GITHUB_FILE
-            value: "kafkaui.json"
-        envFrom:
-          - secretRef:
-              name: common-secret
+          - name: GITHUB_NGROK_SOURCE
+            value: "git@gitlab.com:i3rothers/platform/ngrok.git"
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0

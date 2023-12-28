@@ -15,6 +15,9 @@ spec:
       containers:
       - name: "identity-server-ngrok"
         image: ngrok/ngrok:alpine
+        envFrom:
+          - secretRef:
+              name: common-secret
         env:
           - name: TYPE
             value: http
@@ -29,11 +32,6 @@ spec:
             value: "identity-server.json"
           - name: GITHUB_NGROK_SOURCE
             value: "git@github.com:kinhnv/Platform.Ngrok.git"
-          - name: SSH_PRIVATE_KEY
-            valueFrom:
-              secretKeyRef:
-                name: common-secret
-                key: SSH_PRIVATE_KEY
         envFrom:
           - secretRef:
               name: common-secret
