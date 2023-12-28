@@ -74,6 +74,6 @@ data:
     do
         echo pull
         echo push
-        is_success=0
-        echo fail
+        is_success=1
+        echo success
     done
