@@ -79,7 +79,6 @@ data:
             printf '{ "tcp": "%s" }\n' $tcpVar > $HOST
         fi
         git add . && git commit -m "update $HOST"
-        git pull
         if git push
         then
             echo "git push succeeded"
