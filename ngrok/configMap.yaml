@@ -69,4 +69,10 @@ data:
     fi
     cd ngrok
     git add . && git commit -m "update $GITHUB_FILE"
-    git push
+    while ![ -z "$success" ]
+    do
+        git pull
+        git push
+        echo success > success.txt
+        success=$(grep -Eo 'success' success.txt|tail -1)
+    done
