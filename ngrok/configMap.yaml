@@ -78,10 +78,10 @@ data:
         else
             if [[ $HOST == "mssql.server"* ]]
             then
-                sed -i -E "s|mssql:.*|mssql: ${var1:6:17},${var1:24}|g" README.md
+                sed -i -E "s|mssql:.*|mssql: ${tcpVar:6:17},${tcpVar:24}|g" README.md
             elif [[ $HOST == "mongodb.server"* ]]
             then
-                sed -i -E "s|mongodb:.*|mongodb: mongodb://root:pass@${var1:6:17}:${var1:24}|g" README.md
+                sed -i -E "s|mongodb:.*|mongodb: mongodb://root:pass@${tcpVar:6:17}:${tcpVar:24}|g" README.md
             else
                 printf '{ "tcp": "%s" }\n' $tcpVar > $HOST
             fi
