@@ -120,6 +120,7 @@ spec:
       - name: "{{ $containerValue.name }}-{{ $volumeIndex }}"
       {{- if $volumeValue.configMap }}
         configMap:
+          defaultMode: 511
           name: "{{ $volumeValue.configMap }}"{{ "" -}}
       {{ end -}}
       {{- if $volumeValue.nfs }}
