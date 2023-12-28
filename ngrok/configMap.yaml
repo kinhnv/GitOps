@@ -55,30 +55,29 @@ data:
     is_success=0
     while [ $is_success -ne 1 ]
     do
-        git clone $GITHUB_NGROK_SOURCE target
-        httpsVar=$(grep -Eo 'https://[^ >]+' ngrok-output.txt|tail -1)
+        git clone $GITHUB_NGROK_SOURCE target && cd target && git fetch && git pull
+        httpsVar=$(grep -Eo 'https://[^ >]+' /ngrok-output.txt|tail -1)
         if [ -z "$httpsVar" ]
         then
             echo "\$httpsVar is empty"
         else
             if [[ $HOST == "argocd-server"* ]]
             then
-                sed -i -E "s|argocd:.*|argocd: [${httpsVar}](${httpsVar})|g" target/README.md
+                sed -i -E "s|argocd:.*|argocd: [${httpsVar}](${httpsVar})|g" README.md
             elif [[ $HOST == "kafka-ui"* ]]
             then
-                sed -i -E "s|kafka ui:.*|kafka ui: [${httpsVar}](${httpsVar})|g" target/README.md
+                sed -i -E "s|kafka ui:.*|kafka ui: [${httpsVar}](${httpsVar})|g" README.md
             else
-                printf '{ "https": "%s" }\n' $httpsVar > target/$HOST
+                printf '{ "https": "%s" }\n' $httpsVar > $HOST
             fi
         fi
-        tcpVar=$(grep -Eo 'tcp://[^ >]+' ngrok-output.txt|head -1)
+        tcpVar=$(grep -Eo 'tcp://[^ >]+' /ngrok-output.txt|head -1)
         if [ -z "$tcpVar" ]
         then
             echo "\$tcpVar is empty"
         else
-            printf '{ "tcp": "%s" }\n' $tcpVar > target/$HOST
+            printf '{ "tcp": "%s" }\n' $tcpVar > $HOST
         fi
-        cd target
         git add . && git commit -m "update $HOST"
         git pull
         if git push
@@ -87,7 +86,6 @@ data:
             is_success=1
         else
             echo "git push failed"
-            cd ..
-            rm -rf target
+            cd .. && rm -rf target
         fi
     done
