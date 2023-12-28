@@ -45,6 +45,8 @@ servers:
   - name: gitlab-runner
     image: gitlab/gitlab-runner
     tag: latest
+    securityContext:
+      runAsRoot: true
     env:
     - name: DOCKER_HOST
       value: tcp://docker:2375
