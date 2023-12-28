@@ -52,7 +52,7 @@ data:
     chmod 644 /root/.ssh/known_hosts
     git config --global user.email "kinhnv1801@gmail.com"
     git config --global user.name "Nguyen Van Kinh"
-    
+    is_success=0
     while [ $is_success -ne 1 ]
     do
         git clone $GITHUB_NGROK_SOURCE target
