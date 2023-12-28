@@ -76,9 +76,8 @@ data:
         if git push
         then
             echo "git push succeeded"
+            is_success=1
         else
             echo "git push failed"
         fi
-        is_success=1
-        echo success
     done
