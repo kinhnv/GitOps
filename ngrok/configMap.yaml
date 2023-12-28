@@ -76,7 +76,15 @@ data:
         then
             echo "\$tcpVar is empty"
         else
-            printf '{ "tcp": "%s" }\n' $tcpVar > $HOST
+            if [[ $HOST == "mssql.server"* ]]
+            then
+                sed -i -E "s|mssql:.*|mssql: ${var1:6:17},${var1:24}|g" README.md
+            elif [[ $HOST == "mongodb.server"* ]]
+            then
+                sed -i -E "s|mongodb:.*|mongodb: mongodb://root:pass@${var1:6:17}:${var1:24}|g" README.md
+            else
+                printf '{ "tcp": "%s" }\n' $tcpVar > $HOST
+            fi
         fi
         git add . && git commit -m "update $HOST"
         if git push
