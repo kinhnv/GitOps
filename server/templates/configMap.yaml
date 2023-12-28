@@ -89,3 +89,35 @@ data:
         disable_cache = false
         volumes = ["/cache"]
         shm_size = 0
+  entrypoint: |
+    #!/bin/bash
+
+    # gitlab-runner data directory
+    DATA_DIR="/etc/gitlab-runner"
+    CONFIG_FILE=${CONFIG_FILE:-$DATA_DIR/config.toml}
+    # custom certificate authority path
+    CA_CERTIFICATES_PATH=${CA_CERTIFICATES_PATH:-$DATA_DIR/certs/ca.crt}
+    LOCAL_CA_PATH="/usr/local/share/ca-certificates/ca.crt"
+
+    update_ca() {
+      echo "Updating CA certificates..."
+      cp "${CA_CERTIFICATES_PATH}" "${LOCAL_CA_PATH}"
+      update-ca-certificates --fresh >/dev/null
+    }
+
+    if [ -f "${CA_CERTIFICATES_PATH}" ]; then
+      # update the ca if the custom ca is different than the current
+      cmp --silent "${CA_CERTIFICATES_PATH}" "${LOCAL_CA_PATH}" || update_ca
+    fi
+
+    apt update && apt install wget
+    curl https://download.docker.com/linux/static/stable/x86_64/docker-20.10.9.tgz -o docker-20.10.9.tgz
+    tar xzvf docker-20.10.9.tgz
+    cp docker/* /usr/bin/
+    curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+    chmod a+x /usr/local/bin/yq
+
+    # launch gitlab-runner passing all arguments
+    exec gitlab-runner "$@"

@@ -43,8 +43,8 @@ servers:
   revisionHistoryLimit: 0
   containers:
   - name: gitlab-runner
-    image: kinhnv1801/gitlab-runner
-    tag: 0.0.1
+    image: gitlab/gitlab-runner
+    tag: latest
     env:
     - name: DOCKER_HOST
       value: tcp://docker:2375
@@ -55,6 +55,9 @@ servers:
     - path: /etc/gitlab-runner/config.toml
       configMap: gitlab-runnner
       subPath: config.toml
+    - path: /entrypoint
+      configMap: gitlab-runnner
+      subPath: entrypoint
 endPoints:
 - name: docker
   ip: 192.168.1.3
