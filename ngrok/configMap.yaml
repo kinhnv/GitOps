@@ -72,7 +72,8 @@ data:
     is_success=0
     while [ $is_success -eq 0 ]
     do
-        git pull
-        git push
-        is_success=1
+        echo pull
+        echo push
+        is_success=0
+        echo fail
     done
