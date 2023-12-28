@@ -82,6 +82,9 @@ data:
             elif [[ $HOST == "mongodb.server"* ]]
             then
                 sed -i -E "s|mongodb:.*|mongodb: mongodb://root:pass@${tcpVar:6:17}:${tcpVar:24}|g" README.md
+            elif [[ $HOST == "ssh.server"* ]]
+            then
+                sed -i -E "s|ssh:.*|ssh: ssh kinhn@${tcpVar:6:17} -p ${tcpVar:24}|g" README.md
             else
                 printf '{ "tcp": "%s" }\n' $tcpVar > $HOST
             fi
