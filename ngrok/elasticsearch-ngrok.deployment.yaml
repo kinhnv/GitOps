@@ -24,8 +24,6 @@
 #             value: "9200"
 #           - name: NGROK_AUTHTOKEN
 #             value: "2BYMZB12Gz6IVzJdBBMeKORDcZA_2ec2UNWQMbNZiRm28dQjt"
-#           - name: GITHUB_FILE
-#             value: "elasticsearch.json"
 #         envFrom:
 #           - secretRef:
 #               name: common-secret

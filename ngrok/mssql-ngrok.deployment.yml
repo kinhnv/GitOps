@@ -23,8 +23,6 @@ spec:
             value: "1433"
           - name: NGROK_AUTHTOKEN
             value: "29kkeywjkqeYDLdjmBxMq4hyREu_6qB3yXNEqAuBy9iwXaugL"
-          - name: GITHUB_FILE
-            value: "mssql.json"
         envFrom:
           - secretRef:
               name: common-secret

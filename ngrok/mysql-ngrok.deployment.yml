@@ -23,8 +23,6 @@
 #             value: "3306"
 #           - name: NGROK_AUTHTOKEN
 #             value: "2Xuon5xw3MFCRZVvCgW1JqbXlrP_4dkZyHK2EDMwJrdwTath7"
-#           - name: GITHUB_FILE
-#             value: "mysql.json"
 #         envFrom:
 #           - secretRef:
 #               name: common-secret

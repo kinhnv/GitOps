@@ -23,8 +23,6 @@ spec:
             value: "27017"
           - name: NGROK_AUTHTOKEN
             value: "2Bn9nDSWbGhjW6VMiP2x0ue5ua0_JWkdWZ4mJARotqUFnExt"
-          - name: GITHUB_FILE
-            value: "mongodb.json"
         envFrom:
           - secretRef:
               name: common-secret

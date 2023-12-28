@@ -28,8 +28,6 @@ spec:
           # identityserver.brothers.80@gmail.com
           - name: NGROK_AUTHTOKEN
             value: "2SabxVWz6eKBovyICJkexjbfmEd_6FRkuMYqBaYciqJ6jur4t"
-          - name: GITHUB_FILE
-            value: "identity-server.json"
           - name: GITHUB_NGROK_SOURCE
             value: "git@github.com:kinhnv/Platform.Ngrok.git"
         envFrom:

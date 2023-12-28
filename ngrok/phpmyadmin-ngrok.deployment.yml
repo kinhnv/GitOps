@@ -23,8 +23,6 @@
 #             value: "80"
 #           - name: NGROK_AUTHTOKEN
 #             value: "2Xup9QWtJptv2CxkuxW2bbT0aq8_5fJKhn1khxv9cGxUhkNJF"
-#           - name: GITHUB_FILE
-#             value: "phpmyadmin.json"
 #         envFrom:
 #           - secretRef:
 #               name: common-secret

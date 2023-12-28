@@ -24,8 +24,6 @@ spec:
             value: "22"
           - name: NGROK_AUTHTOKEN
             value: "2A3pYfjcQx1yxnlQnizDnJoTUkl_9SUasrzPwwG59YKyUF1D"
-          - name: GITHUB_FILE
-            value: "ssh.json"
         envFrom:
           - secretRef:
               name: common-secret
