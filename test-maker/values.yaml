@@ -7,4 +7,4 @@ services:
     tag: "957421501"
   eventService:
     label: event-service
-    tag: "1123550160"
+    tag: "1123743674"
